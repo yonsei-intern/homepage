@@ -1,0 +1,230 @@
+Design a modern, highly animated research lab website for "AI Security Lab" 
+at Yonsei University (정보보호/AI보안 연구실), led by Professor 권태경.
+Primary color: #1A5FB4 (blue). Font: Inter or Pretendard.
+
+════════════════════════════════
+SECTION 0 — TERMINAL BOOT SCREEN
+════════════════════════════════
+
+Full viewport, black background (#0a0a0a), JetBrains Mono or Courier New font.
+
+On page load, the following lines type out one by one 
+(typewriter effect, 28ms per character, 0.3s delay between lines):
+
+  > Initializing AI Security Lab...
+  > Connected to Yonsei University network
+  > Loading research modules...
+  >
+  > [AI Security]............[OK]
+  > [Deepfake Detection].....[OK]
+  > [Vulnerability Analysis].[OK]
+  >
+  > 40+ publications indexed
+  > IEEE · USENIX · ICCV · ISSTA loaded
+  >
+  > Welcome to AI Security Lab.
+  > System ready. _
+
+Each "[OK]" text appears in green (#22c55e).
+Cursor blinks at end (1s interval).
+After final line: 1.2s pause, then entire terminal fades out 
+while white page fades in simultaneously (cross-fade, 0.8s).
+Terminal never appears again once dismissed.
+
+Skip button: small "SKIP →" text top-right, clicking immediately 
+cross-fades to the main page.
+
+════════════════════════════════
+SECTION 1 — THREAT (Full-screen Snap)
+════════════════════════════════
+
+Full viewport height. White background. Scroll-snap: mandatory.
+Center-aligned layout.
+
+Text reveal animation (triggers on section enter):
+- Line 1: "지금 이 순간에도" — slides in from left, opacity 0→1, 0.5s, delay 0s
+- Line 2: "AI가 공격받고 있다." — slides in from left, 0.5s, delay 0.2s, bold, #0a0a0a, large (52px)
+- Line 3: "AI가" is black, "공격받고" is #1A5FB4
+
+Below the headline, three stat counters appear (fade up, delay 0.5s):
+- Counter 1: 0 → 1,247,000+ (2s count-up animation) label: "일일 jailbreak 시도 건수"
+- Counter 2: 0 → 73% (1.5s) label: "탐지 우회 성공률 (방어 전)"
+- Counter 3: 0 → 40+ (1s) label: "저희 연구실 발표 논문 수"
+
+Numbers are large (56px, weight 900, blue). Labels are small gray text below.
+
+Bottom of section: "SCROLL DOWN ↓" with animated bouncing arrow.
+Thin blue line animates across bottom of section (width 0→100%, 1.5s, delay 1s).
+
+════════════════════════════════
+SECTION 2 — WHO WE ARE (Full-screen Snap)  
+════════════════════════════════
+
+Full viewport. White background. Scroll-snap.
+
+Left half: large text reveal, word by word (each word fades+slides up, 
+0.06s stagger per word):
+
+  "저희가
+  연구합니다."
+
+Then subtitle appears line by line (0.15s stagger):
+  "권태경 교수님 지도 하에"
+  "AI 보안의 새로운 기준을 만듭니다."
+
+Right half: animated info blocks appear with stagger (translateY 20px → 0, 0.1s stagger):
+- Block 1: "연세대학교 새천년관" + address
+- Block 2: "3대 연구 분야" + AI보안 / 딥페이크 / 취약성
+- Block 3: "IEEE · USENIX · ICCV · ISSTA" + "세계 최우수 학술대회"
+
+Bottom: "AI Security, Deepfake, Vulnerability" — 
+three words appear one by one in large faint gray text 
+as a decorative background element (opacity 0.08, 80px).
+
+════════════════════════════════
+SECTIONS 3–5 — RESEARCH AREAS (Full-screen Snap × 3)
+════════════════════════════════
+
+Three consecutive full-viewport snap sections, one per research area.
+Each section: white background, scroll-snap mandatory.
+
+Entry animation sequence (triggers each time section snaps into view):
+1. Giant number (01 / 02 / 03) — draws in from left edge, 0.4s
+2. Small caps category label — fades in, delay 0.2s
+3. Korean title (large, 48px, weight 900) — 
+   each character slides up individually (0.03s stagger per character)
+4. Description text — lines appear one by one (0.12s stagger per line)
+5. Tag pills — pop in with scale 0.8→1 + fade, 0.06s stagger
+6. Related paper cards on right — slide in from right (translateX 40px→0), 
+   0.1s stagger per card
+
+Section 3 — AI 보안:
+Title: "AI 보안" / Tags: Jailbreak, Prompt Injection, Red-Teaming, LLM Security
+Papers: RAID 2025 / IEEE TIFS 2025 / WISA 2025
+Accent detail: small animated shield icon drawing itself (SVG stroke animation)
+
+Section 4 — 딥페이크 탐지:
+Title: "딥페이크 탐지" / Tags: Face Anti-Spoofing, GAN Detection, Multi-View
+Papers: ICCV 2025 / WDC 2024 / IEEE Access 2024
+Accent detail: animated face scan lines SVG
+
+Section 5 — 취약성 탐지:
+Title: "취약성 탐지" / Tags: Fuzzing, RL Mutation, Symbolic Exec, NIDS
+Papers: ISSTA 2024 / USENIX Sec 2023 / ICISC 2024 (Best Paper)
+Accent detail: animated code/binary text scrolling vertically (subtle, opacity 0.06)
+
+Each section has a thin progress indicator on the right edge 
+showing current position (1/5, 2/5... through all snap sections).
+
+════════════════════════════════
+SECTION 6 — PEOPLE
+════════════════════════════════
+
+Normal scroll (no snap). White background.
+
+Header text reveal on scroll enter:
+- Eyebrow "PEOPLE" — letter by letter, 0.04s stagger
+- h2 "연구실 구성원" — word by word slide up, 0.1s stagger
+
+Member cards in horizontal carousel (overflow hidden):
+- Each card: circular avatar (blue tint, bold initials), name, role badge
+- On section enter: cards animate in from right, 0.07s stagger per card
+- Hover: card lifts (translateY -4px), border turns blue, 0.2s transition
+- ← → navigation with smooth transform transition (0.5s cubic-bezier)
+
+Members: 권태경 (지도교수) / 박사 연구원 1–2 / 석사 연구원 1–3 / 인턴 1–2
+Replace initials with real headshot photos when available.
+
+════════════════════════════════
+SECTION 7 — RESEARCH OUTPUT
+════════════════════════════════
+
+Normal scroll. Light blue-gray background (#fafbff).
+
+Header: same letter-by-letter eyebrow + word-by-word h2 pattern.
+"프로젝트 · 특허 · 논문"
+
+Three-column bordered card grid:
+
+Each column header (icon + title + subtitle) fades up on enter (0.1s stagger).
+Each list item inside columns reveals one by one (0.08s stagger) as section enters.
+"See more →" buttons slide up last.
+
+Column 1 — Projects (document icon):
+- AI 모델 취약점 자동 평가 플랫폼 / 2024–진행 중
+- 딥페이크 탐지 일반화 모델 개발 / 2023–2024
+- LLM 기반 퍼징 자동화 / 2024
+
+Column 2 — Patents (star icon):
+- 딥페이크 탐지 방법 및 시스템 / 국내 등록
+- AI 모델 취약점 분석 장치 / 국내 출원
+- 메타버스 연속 인증 방법 / 국제 출원
+
+Column 3 — Publications (book icon):
+- Red-Teaming LLMs with Token Control Score / RAID 2025
+- BoKASAN: Binary-only Kernel Address Sanitizer / USENIX Sec 2023
+- Fuzzing JS Interpreters with RL Mutation / ISSTA 2024
+
+════════════════════════════════
+SECTION 8 — CONTACT
+════════════════════════════════
+
+Normal scroll. Background: #0a0a0a (dark).
+
+Header text: "찾아오시는 길 & 연락처"
+- "찾아오시는 길 &" white, "연락처" in #4A9EFF
+- Words appear one by one sliding up from below (0.1s stagger)
+
+Two dark cards (#141414, border #1e1e1e, border-radius 14px):
+Cards slide up from below on scroll enter (translateY 28px→0, 
+opacity 0→1, 0.12s stagger between cards).
+
+Card 1 — 교수님 연구실:
+- 서울특별시 서대문구 연세로 50, 연세대학교 새천년관 407호
+- 02-2123-4523
+
+Card 2 — 정보보호 / AI 보안 연구실:
+- 서울특별시 서대문구 연세로 50, 연세대학교 새천년관 109호, 110호
+- aiseclab.meet@gmail.com
+- 02-2123-4197
+
+Icons: location pin, envelope, phone — all in #4A9EFF.
+
+════════════════════════════════
+ANIMATION MASTER LIST
+════════════════════════════════
+
+| Element                  | Animation                        | Duration | Trigger       |
+|--------------------------|----------------------------------|----------|---------------|
+| Terminal typewriter      | char by char, 28ms/char          | ~6s      | page load     |
+| [OK] color               | instant green on appear          | 0s       | line complete |
+| Terminal → white fade    | cross-fade                       | 0.8s     | auto after 6s |
+| Section 1 headlines      | slide from left                  | 0.5s     | snap enter    |
+| Stat counters            | count up (easeOut)               | 1.5–2s   | snap enter    |
+| Blue bottom line         | width 0→100%                     | 1.5s     | snap enter    |
+| Section 2 words          | fade + translateY, word stagger  | 0.06s/wd | snap enter    |
+| Section 2 info blocks    | translateY stagger               | 0.1s/blk | snap enter    |
+| Sections 3–5 number      | slide from left                  | 0.4s     | snap enter    |
+| Sections 3–5 title chars | translateY per character         | 0.03s/ch | snap enter    |
+| Sections 3–5 desc lines  | fade per line                    | 0.12s/ln | snap enter    |
+| Tag pills                | scale 0.8→1 + fade               | 0.06s/tg | snap enter    |
+| Paper cards              | translateX 40px→0, stagger       | 0.1s/crd | snap enter    |
+| SVG accent icons         | stroke draw animation            | 0.8s     | snap enter    |
+| Section eyebrows         | letter by letter                 | 0.04s/ch | scroll enter  |
+| Section h2               | word by word slide up            | 0.1s/wd  | scroll enter  |
+| People cards             | translateX stagger               | 0.07s/cd | scroll enter  |
+| List items               | fade up stagger                  | 0.08s/it | scroll enter  |
+| Contact cards            | translateY 28px→0, stagger       | 0.12s/cd | scroll enter  |
+| All sections             | base fade up 32px                | 0.65s    | scroll enter  |
+
+════════════════════════════════
+NAV (sticky, all sections)
+════════════════════════════════
+
+- Logo: "AI Security Lab" — "AI" in #1A5FB4
+- Links: Professor / People / Publications / Patents / Projects / Contact
+- CTA: "Join Us" — blue pill button
+- On terminal screen: nav hidden
+- On white sections: white background, border-bottom 1px #ebebeb
+- Scroll progress bar: 2px blue line at very top of viewport, 
+  width grows from 0→100% as user scrolls through entire page
