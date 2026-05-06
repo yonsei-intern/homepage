@@ -1,118 +1,193 @@
-import { motion, useInView } from "motion/react";
-import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+﻿import { motion, useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 interface Member {
   name: string;
   role: string;
-  initials: string;
 }
 
+const MEMBERS: Member[] = Array.from({ length: 10 }, (_, i) => ({
+  name: `name${i + 1}`,
+  role: "Researcher",
+}));
+
 export function PeopleSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const ref = useRef<HTMLElement | null>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const members: Member[] = [
-    { name: "권태경", role: "지도교수", initials: "TK" },
-    { name: "박사 연구원", role: "PhD Candidate", initials: "Ph" },
-    { name: "석사 연구원 1", role: "Master's Student", initials: "M1" },
-    { name: "석사 연구원 2", role: "Master's Student", initials: "M2" },
-    { name: "석사 연구원 3", role: "Master's Student", initials: "M3" },
-    { name: "인턴 1", role: "Intern", initials: "I1" },
-    { name: "인턴 2", role: "Intern", initials: "I2" },
-  ];
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const groupRef = useRef<HTMLDivElement | null>(null);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % members.length);
-  };
+  const groupWidthRef = useRef(0);
+  const xRef = useRef(0);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + members.length) % members.length);
-  };
+  const baseVelocityRef = useRef(-16); // idle: move left slowly
+  const velocityRef = useRef(-16);
+  const scrollingUntilRef = useRef(0);
 
-  const eyebrow = "PEOPLE";
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const measure = () => {
+      if (groupRef.current) groupWidthRef.current = groupRef.current.offsetWidth;
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (groupRef.current) ro.observe(groupRef.current);
+    window.addEventListener("resize", measure);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  useEffect(() => {
+    const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
+    const markScrolling = () => {
+      scrollingUntilRef.current = performance.now() + 280;
+    };
+    const pushVelocity = (delta: number) => {
+      velocityRef.current = clamp(velocityRef.current - delta, -1200, 1200);
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      // wheel down(+) => move left faster(-), wheel up(-) => move right(+)
+      markScrolling();
+      pushVelocity(e.deltaY * 1.35);
+    };
+    const getScrollTop = (el: Element | Window) =>
+      el instanceof Window ? el.scrollY : (el as HTMLElement).scrollTop;
+    const getScrollableParent = (el: HTMLElement | null): Element | Window => {
+      if (!el) return window;
+      let cur: HTMLElement | null = el.parentElement;
+      while (cur) {
+        const style = getComputedStyle(cur);
+        const y = style.overflowY;
+        if ((y === "auto" || y === "scroll") && cur.scrollHeight > cur.clientHeight) {
+          return cur;
+        }
+        cur = cur.parentElement;
+      }
+      return window;
+    };
+
+    const scrollTarget = getScrollableParent(sectionRef.current);
+    let lastY = getScrollTop(scrollTarget);
+    const onScroll = () => {
+      const nowY = getScrollTop(scrollTarget);
+      const dy = nowY - lastY;
+      lastY = nowY;
+      markScrolling();
+      // scroll down(+) => left, scroll up(-) => right
+      pushVelocity(dy * 22);
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: true });
+    scrollTarget.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      scrollTarget.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    let raf = 0;
+    let last = performance.now();
+
+    const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      const isScrollingNow = now < scrollingUntilRef.current;
+      const shouldPause = isPaused && !isScrollingNow;
+
+      if (!shouldPause) {
+        xRef.current += velocityRef.current * dt;
+
+        const width = groupWidthRef.current;
+        if (width > 0) {
+          if (-xRef.current >= width) xRef.current += width;
+          if (xRef.current > 0) xRef.current -= width;
+        }
+
+        // decay toward idle velocity
+        velocityRef.current += (baseVelocityRef.current - velocityRef.current) * 0.05;
+
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(${xRef.current}px, 0, 0)`;
+        }
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [isPaused]);
 
   return (
     <section
       id="people"
-      ref={ref}
-      className="min-h-screen flex items-center bg-white px-6 py-24"
+      ref={(node) => {
+        ref.current = node;
+        sectionRef.current = node;
+      }}
+      className="relative min-h-screen flex items-center bg-white px-6 py-24 pb-24 overflow-x-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full space-y-12">
-        <div className="space-y-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            className="text-xs tracking-widest text-[#1A5FB4] uppercase"
-          >
-            {eyebrow.split("").map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.3, delay: index * 0.04 }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </motion.div>
+      <div className="relative z-10 max-w-[1600px] mx-auto w-full space-y-10">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="space-y-2 px-1"
+        >
+          <div className="text-xs tracking-[0.2em] text-[#1A5FB4] uppercase">People</div>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0a0a0a]">연구실 구성원</h2>
+        </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-4xl md:text-5xl font-bold"
+        <div className="overflow-hidden" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+          <div
+            ref={trackRef}
+            className="flex w-max gap-6 will-change-transform"
+            onWheelCapture={(e) => {
+              scrollingUntilRef.current = performance.now() + 280;
+              velocityRef.current = Math.max(
+                -1200,
+                Math.min(1200, velocityRef.current - e.deltaY * 1.35),
+              );
+            }}
           >
-            연구실 구성원
-          </motion.h2>
-        </div>
-
-        <div className="relative">
-          <div className="overflow-hidden">
-            <motion.div
-              className="flex gap-6"
-              animate={{ x: -currentIndex * 280 }}
-              transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-            >
-              {members.map((member, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.07 }}
-                  className="flex-shrink-0 w-64 bg-white border border-gray-200 rounded-xl p-6 hover:-translate-y-1 hover:border-[#1A5FB4] transition-all duration-200 cursor-pointer"
-                >
-                  <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#1A5FB4] to-[#4A9EFF] flex items-center justify-center text-white text-2xl font-bold mb-4">
-                    {member.initials}
-                  </div>
-                  <div className="text-center space-y-2">
-                    <div className="font-semibold text-lg">{member.name}</div>
-                    <div className="inline-block px-3 py-1 bg-[#1A5FB4]/10 text-[#1A5FB4] text-xs rounded-full">
-                      {member.role}
-                    </div>
-                  </div>
-                </motion.div>
+            <div ref={groupRef} className="flex gap-6">
+              {MEMBERS.map((member) => (
+                <ProfileCard key={`a-${member.name}`} member={member} />
               ))}
-            </motion.div>
-          </div>
-
-          <div className="flex gap-4 mt-8 justify-center">
-            <button
-              onClick={prevSlide}
-              className="p-2 rounded-full border border-gray-300 hover:border-[#1A5FB4] hover:bg-[#1A5FB4]/5 transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="p-2 rounded-full border border-gray-300 hover:border-[#1A5FB4] hover:bg-[#1A5FB4]/5 transition-colors"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+            </div>
+            <div className="flex gap-6" aria-hidden="true">
+              {MEMBERS.map((member) => (
+                <ProfileCard key={`b-${member.name}`} member={member} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ProfileCard({ member }: { member: Member }) {
+  return (
+    <article className="w-[300px] md:w-[340px] h-[520px] p-0">
+      <div className="h-full w-full flex flex-col">
+        <div className="flex-1 bg-[#e6e9ee]" />
+
+        <div className="mt-3 bg-[#eef2f7] px-3 py-3 text-center">
+          <div className="text-lg font-semibold uppercase tracking-wide text-[#1f2937]">{member.name}</div>
+          <div className="text-xs text-[#6b7280] mt-0.5">{member.role}</div>
+        </div>
+      </div>
+    </article>
   );
 }

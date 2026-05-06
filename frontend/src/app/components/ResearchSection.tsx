@@ -1,6 +1,5 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { Shield, Eye, Search } from "lucide-react";
 
 interface ResearchSectionProps {
   number: string;
@@ -9,7 +8,9 @@ interface ResearchSectionProps {
   description: string[];
   tags: string[];
   papers: { title: string; venue: string }[];
-  icon: "shield" | "eye" | "search";
+  showTryButton?: boolean;
+  onLearnMore?: () => void;
+  onTry?: () => void;
 }
 
 export function ResearchSection({
@@ -19,19 +20,19 @@ export function ResearchSection({
   description,
   tags,
   papers,
-  icon,
+  showTryButton = false,
+  onLearnMore,
+  onTry,
 }: ResearchSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  const IconComponent = icon === "shield" ? Shield : icon === "eye" ? Eye : Search;
 
   return (
     <section
       ref={ref}
       className="min-h-screen flex items-center bg-white px-6 snap-start snap-always relative"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 lg:items-center">
         <div className="space-y-8">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -51,7 +52,7 @@ export function ResearchSection({
             {category}
           </motion.div>
 
-          <div className="text-5xl font-black space-y-2">
+          <div className="text-5xl font-black">
             {title.split("").map((char, index) => (
               <motion.span
                 key={index}
@@ -86,7 +87,7 @@ export function ResearchSection({
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: 0.7 + index * 0.06 }}
-                className="px-4 py-2 bg-[#1A5FB4]/5 border border-[#1A5FB4]/20 rounded-full text-sm text-[#1A5FB4]"
+                className="px-3 py-1.5 rounded-full text-sm text-[#1A5FB4] bg-[#1A5FB4]/7"
               >
                 {tag}
               </motion.span>
@@ -94,35 +95,58 @@ export function ResearchSection({
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="pt-4"
+            initial={{ opacity: 0, y: 8 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.35, delay: 0.95 }}
+            className="flex flex-wrap items-center gap-3 pt-1"
           >
-            <IconComponent className="w-16 h-16 text-[#1A5FB4]/20" strokeWidth={1.5} />
+            <button
+              type="button"
+              onClick={onLearnMore}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-[#1A5FB4] border border-[#1A5FB4]/30 hover:border-[#1A5FB4] hover:bg-[#1A5FB4]/5 transition-colors"
+            >
+              더 알아보기
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path d="M2 6.5h9M6.5 2l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            {showTryButton && (
+              <button
+                type="button"
+                onClick={onTry}
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-[#1A5FB4] hover:bg-[#174f98] transition-colors"
+              >
+                체험해보기
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                  <path d="M2 6.5h9M6.5 2l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            )}
           </motion.div>
         </div>
 
-        <div className="space-y-4">
+        <div className="w-full max-w-[760px] rounded-2xl bg-[#f8fbff] px-4 py-3.5 md:px-6 md:py-5 space-y-0.5 lg:self-center lg:ml-auto">
           {papers.map((paper, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: 40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-              className="bg-white border border-gray-200 rounded-xl p-6 hover:border-[#1A5FB4] hover:shadow-lg transition-all duration-300"
+              className="grid grid-cols-1 md:grid-cols-[132px_1fr] gap-2.5 md:gap-5 py-3.5 border-b border-[#1A5FB4]/10 last:border-b-0"
             >
-              <div className="text-sm font-semibold text-[#1A5FB4] mb-2">
+              <div className="text-xs md:text-sm font-semibold text-[#1A5FB4] tracking-wide">
                 {paper.venue}
               </div>
-              <div className="text-gray-900 leading-relaxed">{paper.title}</div>
+              <div className="text-gray-900 text-[15px] md:text-base leading-snug font-medium">
+                {paper.title}
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
 
       <div className="absolute top-8 right-8 text-sm text-gray-300">
-        {number} / 05
+        {number} / 03
       </div>
     </section>
   );

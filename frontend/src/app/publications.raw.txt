@@ -1,0 +1,250 @@
+
+2026
+최지혁, 원신영, 한상수, 권태경, "RAG기반라이브러리하네스자동생성프레임워크", 정보보호학회논문지, Vol. 36, No.1, Feb. 2026.
+
+2025
+Leo Hyun Park and Taekyoung Kwon, "Red-Teaming LLMs with Token Control Score: Efficient, Universal, and Transferable Jailbreaks," in Proc. International Symposium on Research in Attacks, Intrusions, and Defenses (RAID), Oct.2025 (BK, 정보과학회 우수학술대회)
+Jeongmin Yu, Susang Kim, Kisu Lee, Taekyoung Kwon, Won-Yong Shin, Ha Young Kim, "Multi-View Slot Attention Using Paraphrased Texts for Face Anti-Spoofing," In Proc. International Conference on Computer Vision (ICCV), Oct. 2025.  (BK, 정보과학회 최우수학술대회)
+A Yeon Kim, Jung Yup Rhee and Taekyoung Kwon, "LeakGuard: Detecting and Mitigating Attribute Leakage in Fine-Tuned Diffusion Models" In Proc. the 26th World Conference on Information Security Applications (WISA), Aug. 2025.
+Myunggyo Oh, Hong Eun Ahn, Leo Hyun Park, and Taekyoung Kwon, "Amplifying Training Data Exposure through Fine-Tuning with Pseudo-Labeled Memberships," IEEE Transactions on Information Forensics and Security (IEEE TIFS), 2025. (Impact Factor: 8)
+Eunbi Hwang, YoonSik Kim and Taekyoung Kwon, “Continuous Authentication for Secure and Seamless User-Avatar Integration in Multi-Device Metaverses,”  IEEE Internet of Things Journal (IEEE IoT Journal), Aug.2025. (Impact Factor: 8.9)
+Sangsoo Han, Eunbi Hwang, YoonSik Kim, and Taekyoung Kwon, “A Continuous Authentication Framework for Securing Metaverse Identities,” IEEE Transactions on Services Computing (IEEE TSC), Mar. 2025. (Impact Factor: 5.8)
+김태호, 정지우, 최지혁, 권태경, "암호 라이브러리 퍼징을 위한 LLM 기반 하네스 자동 생성 연구", 정보보호학회논문지, Vol. 35, No.4, Aug. 2025.
+권순신, 권태경 - "해무 환경에서 디헤이징 기반 객체 탐지 성능 향상 연구." 국군방첩사령부 국방과 보안 학술지 제13호(KCI), June. 2025
+김예지, 황은비, 권태경, "딥페이크 탐지 기술의 최신 연구 동향과 일반화 관점 분석," 한국정보보호학회 하계학술대회 (CISC S25), June. 2025. (정보보호학회장상 우수논문상)
+김규환, 권태경, "LLM 오픈소스 데이터셋 신뢰성 확보를 위한 데이터 중심 평가 동향 분석," 한국정보보호학회 하계학술대회 (CISC S25), June. 2025.
+김태호, 권태경, "동적 취약점 분석 결과의 중복 제거 기법 연구 동향 분석," 한국정보보호학회 하계학술대회 (CISC S25), June. 2025.
+권순신, 권태경, "해상 환경에서 디헤이징 객체 탐지 성능 향상을 위한 해무 데이터셋 생성 및 검증 연구," 한국정보보호학회 하계학술대회 (CISC S25), June. 2025.
+
+2024
+1. Jeewoo Jung, Taekyoung Kwon, “Enhancing Differential Fuzzing of Cryptographic Libraries with Sustainable Hybrid Fuzzing and Crypto-Specific Mutation,” in Proc. the Annual International Conference on Information Security and Cryptology (ICISC), Nov. 2024. (Best Paper Award)
+Leo Hyun Park, Jaeuk Kim, Myung Gyo Oh, Jaewoo Park, and Taekyoung Kwon, “Adversarial Feature Alignment: Balancing Robustness and Accuracy in Deep Learning via Adversarial Training,” in Proc. the 17th ACM Workshop on Artificial Intelligence and Security (AISec), Oct. 2024.
+Jueon Eom, Seyeon Jeong, and Taekyoung Kwon, “Fuzzing JavaScript Interpreters with Coverage-Guided Reinforcement Learning for LLM-based Mutation,” in Proc. the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA), Sep. 2024. (BK, 정보과학회 최우수학술대회)
+Jung Yup Rhee, Leo Hyun Park and Taekyoung Kwon, “Enhancing Robustness in NIDS via Coverage Guided Fuzzing and Adversarial Training,” in Proc. the 25th World Conference on Information Security Applications (WISA), Aug. 2024.
+Hyunjoon Kim, Jaehee Lee, Leo Hyun Park, and Taekyoung Kwon, “On the Correlation Between Deepfake Detection Performance and Image Quality Metrics,” Proceedings of the 3rd Workshop on Security Implications of Deepfakes and Cheapfakes (WDC), July. 2024.
+Yoonsik Kim, Eunji Lim, and Taekyoung Kwon, “On the Impact of Deployment Errors in Location-based Key Predistribution Protocols for Wireless Sensor Networks,” IEEE Access, Vol.12, pp.35765 – 35778, Mar. 2024. (Impact Factor: 3.6)
+Jaewoo Park, Leohyun Park, Hongeun Ahn, and Taekyoung Kwon, “Coexistence of Deepfake Defenses: Addressing the Poisoning Challenge,” IEEE Access, Vol.12, pp.11674 – 11687, Jan. 2024. (Impact Factor: 3.6)
+김현준, 안홍은, 박래현, 권태경, “딥페이크 탐지 모델의 검증 방법론 불일치에 따른 성능 편향 분석 연구,” 정보보호학회논문지, Vol. 34, No. 5, Oct. 2024.
+정지우, 김태호, 권태경, “기계학습 기반 스케줄링 전략을 적용한 최신 퍼징 연구,” 정보보호학회논문지, Vol. 34, No. 5, Oct. 2024.
+이정엽, 조원영, 박래현, 권태경, “적대적 공격 및 방어 기술의 성능 향상을 위한 역방향 적대적 데이터 생성 연구,” 정보보호학회논문지, Vol. 34, No. 5, Oct. 2024.
+이재희, 권태경, “CLIP 모델 미세 조정을 통한 제로샷 기반 딥페이크 탐지 성능 향상 연구,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024. (한국전자통신연구원 원장상 수상)
+이정엽, 김아연, 박래현, 권태경, “임의의 픽셀 단위 섭동에 대한 컴퓨터 비전 모델의 강건성 분석 연구,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+한상수, 권태경, “AI 모델 보안성 확보를 위한 RMF 설계 및 적용 방안,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+권순신, 한상수, 권태경, “AI 포렌식을 위한 XAI 기반 기술과 법적 신뢰성 확보 방안,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+김태호, 정지우, 권태경, “최신 퍼징 분야에서의 LLM 활용 동향,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+김아연, 이정엽, 박래현, 권태경, “생성형 모델의 악의적 위협에 대응하기 위한 가드레일 방어 기술 분석 연구,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+조주원, 안홍은, 박래현, 권태경, “대규모 언어 모델의 최신 Jailbreak 기법, 성공 평가 및 통합 프레임워크 분석,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+정지우, 권태경, “MacOS 취약점 탐지 동향에 관한 연구,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+김현준, 권태경, “일반화 데이터셋 구축을 위한 딥페이크 생성기법 동향 분석,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+안홍은, 조주원, 권태경, “LLM 및 MLLM을 대상으로 한 탈옥 공격 분석: 공격 턴 수와 모달리티 기반 접근,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+조원영, 김윤식, 권태경, “AI 포렌식의 신뢰성과 투명성 확보를 위한 블록체인 기술 활용 방안,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+이치훈, 김영록, 김병관, 김수진, 권태경, “한국어 딥보이스 판별을 위한 다중 딥러닝 모델 비교 연구,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+김영수, 박대형, 윤병선, 민상규, 이재희, 권태경, “적대적 공격에 대한 딥페이크 탐지 모델의 강건성 분석,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+송현중, 장우성, 최경수, 조효진, 권태경, “사이버범죄를 통한 비대면인증 취약점 분석 및웨어러블 기기 기반 개선 방안,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+이해찬, 전유등, 장연주, 김선진, 권태경, “범죄에 이용된 해외 가상자산 거래의 연관성 분석 모델 설계,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+하영정, 신승우, 박지호, 김승현, 권태경, “딥러닝 기반 디지털 성범죄물 탐색 모델 성능 평가,” 한국정보보호학회 동계학술대회 (CISC W24), Nov. 2024.
+이재희, 김현준, 박래현, 권태경, “딥페이크 탐지 성능 검증을 위한 이미지 품질 평가 방법 분석,” 한국정보보호학회 하계학술대회 (CISC S24), Jun. 2024.
+조원영, 김윤식, 황은비, 한상수, 권태경, “블록체인 기술을 사용한 메타버스 로그인 방식 분석,” 한국정보보호학회 하계학술대회 (CISC S24), Jun. 2024. (부채널분석 연구회 회장상 수상)
+
+2023
+Seyeon Jeong, Eunbi Hwang, Yeongpil Cho, and Taekyoung Kwon, “PHI: Pseudo-HAL Identification for Scalable Firmware Fuzzing,” in Proc. the Annual International Conference on Information Security and Cryptology (ICISC), Nov. 2023.
+Jaewoo Park, Hong Eun Ahn, Leo Hyun Park, and Taekyoung Kwon, “Robust Training for Deepfake Detection Models Against Disruption-Induced Data Poisoning,” in Proc. the 24th World Conference on Information Security Applications (WISA), Aug. 2023.
+Mingi Cho, Dohyeon An, Hoyong Jin, and Taekyoung Kwon, “BoKASAN: Binary-only Kernel Address Sanitizer for Effective Kernel Fuzzing,” in Proc. the 32nd USENIX Security Symposium (USENIX Security), Aug. 2023. (BK, 정보과학회 최우수학술대회)
+Leo Hyun Park, Soochang Chung, Jaeuk Kim, and Taekyoung Kwon, “GradFuzz: Fuzzing Deep Neural Networks with Gradient Vector Coverage for Adversarial Examples,” Neurocomputing, Elsevier, Vol. 522, pp. 165-180, Feb. 2023. (Impact Factor: 6.8)
+Myung Gyo Oh, Leo Hyun Park, Jaeuk Kim, Jaewoo Park, and Taekyoung Kwon, “Membership Inference Attacks with Token-Level Deduplication on Korean Language Models,” IEEE Access, Vol.11, pp.10207 – 10217, Jan. 2023. (Impact Factor: 3.6)
+김재욱, 오명교, 박래현, 권태경, “Attention 기법에 기반한 적대적 공격의 강건성 향상 연구,” 정보보호학회논문지, Vol. 33, No. 4, pp. 621-631, Aug. 2023.
+이서린, 박래현, 김현준, 박재우, 권태경, “딥페이크 탐지 모델의 성능 검증 방법론 동향 분석,” 한국정보보호학회 동계학술대회 (CISC S23), Dec. 2023. (우수논문상 수상)
+이정엽, 박래현, 권태경, “변형된 정상 범주 이미지 기반의 지속 학습을 통한 딥러닝 모델의 강건성 훼손 연구,” 한국정보보호학회 동계학술대회 (CISC S23), Dec. 2023.
+김현준, 박래현, 박재우, 안홍은, 권태경, “압축센싱을 통한 적대적 공격 정화,” 한국정보보호학회 동계학술대회 (CISC S23), Dec. 2023.
+안홍은, 박래현, 오명교, 권태경, “정보보안의 CIA 기반 LLM 정렬 분석,” 한국정보보호학회 동계학술대회 (CISC S23), Dec. 2023.
+안홍은, 박래현, 오명교, 권태경, “ChatGPT 플러그인의 특징과 보안 위협 분석,” 한국정보보호학회 하계학술대회 (CISC S23), Jun. 2023.
+오명교, 박래현, 권태경, “대형 언어 모델의 훈련 데이터 추출 공격에 관한 연구: 위협, 문제점, 그리고 대응 방안,” 한국정보보호학회 하계학술대회 (CISC S23), Jun. 2023.
+김현준, 박래현, 김재욱, 오명교, 박재우, 권태경, “딥페이크 탐지 모델의 검증 데이터셋의 보편화를 위한 딥페이크 생성 기법 분석 연구,” 한국정보보호학회 하계학술대회 (CISC S23), Jun. 2023.
+김윤식, 임은지, 권태경, “3D 환경에서의 무선 센서 네트워크 위치 기반 Pairwise 키 사전 분배 기법 성능 비교 연구,” 한국정보보호학회 하계학술대회 (CISC S23), Jun. 2023. (우수논문상 수상)
+정지우, 전일신, 황은비, 권태경, “기계학습 기반으로 입력을 최적화하는 퍼징 기술 연구,” 한국정보보호학회 하계학술대회 (CISC S23), Jun. 2023. (KISA 원장상 수상)
+전일신, 정지우, 황은비, 권태경, “최신 안티 퍼징 동향 분석,” 한국정보보호학회 하계학술대회 (CISC S23), Jun. 2023.
+이정엽, 박래현, 오명교, 권태경, “이미지 변환과 JPG 압축을 통한 적대적 노이즈 제거,” 한국정보보호학회 하계학술대회 (CISC S23), Jun. 2023.
+
+2022
+Hoyong Jin, Dohyeon An and Taekyoung Kwon, “Differential Testing of Cryptographic Libraries with Hybrid Fuzzing,” in Proc. the Annual International Conference on Information Security and Cryptology (ICISC), Nov. 2022. (Best Paper Award)
+Leo Hyun Park, Eunbi Hwang, Donggun Lee, and Taekyoung Kwon, “Towards Constructing Consistent Pattern Strength Meters with User’s Visual Perception,” in Proc. the Annual International Conference on Information Security and Cryptology (ICISC), Nov. 2022.
+Leo Hyun Park, Jaewoo Park, Soochang Chung, Jaeuk Kim, Myung Gyo Oh, and Taekyoung Kwon, “Poster: Adversarial Defense with Deep Learning Coverage on MagNet’s Purification,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), Los Angeles, CA, Nov. 2022.
+Myung Gyo Oh, Leo Hyun Park, Jaeuk Kim, Jaewoo Park, and Taekyoung Kwon, “On Membership Inference Attacks to Generative Language Models across Language Domains,” in Proc. the 23rd World Conference on Information Security Applications (WISA), Lecture Notes in Computer Science, Vol. 13720, Springer, Cham, pp. 143-155, 2022.
+Leo Hyun Park, Jaeuk Kim, Jaewoo Park, and Taekyoung Kwon, “Mixed and Constrained Input Mutation for Effective Fuzzing of Deep Learning Systems,” Information Sciences, Elsevier, Vol. 614, pp. 497-517, Oct. 2022. (Impact Factor: 6.8)
+정세연, 황은비, 조영필, 권태경, “유사 HAL 함수 탐색을 통한 펌웨어 퍼징 기법,” 정보보호학회논문지, Vol. 32, No. 6, pp. 1121-1125, Dec. 2022.
+김윤식, 임은지, 권태경, “무선센서네트워크 응용과 위치기반 키 분배 기법 활용 연구,” 한국해군과학기술학회 동계학술대회, Dec. 2022.
+황은비, 양경덕, 권태경, “임베디드 시스템 대상 펌웨어 퍼징 기술 동향,” 한국정보보호학회 동계학술대회 (CISC W22), Nov. 2022.
+양경덕, 황은비, 권태경, “모바일 앱 기반 간편인증 모델 비교 분석: 안전성과 편리성 중심으로,” 한국정보보호학회 동계학술대회 (CISC W22), Nov. 2022.
+김재욱, 박래현, 오명교, 박재우, 권태경, “적대적 공격으로부터 강건한 딥러닝 모델을 위한 Attention 기반 적대적 학습 기법 연구,” 한국정보보호학회 동계학술대회 (CISC W22), Nov. 2022. (우수논문상 수상)
+박재우, 박래현, 김재욱, 오명교, 권태경, “딥러닝 모델 대상의 퍼징 입력 생성 연구 동향,” 한국정보보호학회 동계학술대회 (CISC W22), Nov. 2022.
+전일신, 정지우, 권태경, “AFL++의 AFL에 대한 성능 개선 여부에 대한 연구,” 한국정보보호학회 동계학술대회 (CISC W22), Nov. 2022.
+김윤식, 임은지, 권태경, “무선 센서 네트워크의 다양한 배치 방법에 대한 고찰,” 한국정보보호학회 하계학술대회 (CISC S22), Jun. 2022.
+박재우, 박래현, 김재욱, 오명교, 엄주언, 권태경, “GAN을 이용한 적대적 공격 기법 동향 분석,” 한국정보보호학회 하계학술대회 (CISC S22), Jun. 2022.
+
+2021
+Mingi Cho, Hoyoung Jin, Dohyeon An, and Taekyoung Kwon, “Evaluating Code Coverage for Kernel Fuzzers via Function Call Graph,” IEEE Access,Vol.9, pp.157267 – 157277, Nov. 2021. (Impact Factor: 3.6)
+Eunbi Hwang, Hyunseok Lee, Seyeon Jeong, Mingi Cho, and Taekyoung Kwon, “Toward Fast and Scalable Firmware Fuzzing with Dual-Level Peripheral Modeling,” IEEE Access, Vol.9, pp.141790 – 141799, Oct. 2021 (Impact Factor: 3.6)
+JongHyup Lee, and Taekyoung Kwon, “Distributed Watchdogs Based on Blockchain for Securing Industrial Internet of Things,” Sensors, Vol. 21, No. 13, June. 2021. (Impact Factor: 3.5)
+Mingi Cho, Jaedong Jang, Yezee Seo, Seyeon Jeong, Soochang Chung, and Taekyoung Kwon, “Towards Bidirectional LUT-level Detection of Hardware Trojans,” Computers & Security, Elsevier, Vol.104, May 2021. (Impact Factor: 5.4)
+Pyung Kim, Younho Lee, Youn-Sik Hong, and Taekyoung Kwon,”A Password Meter without Password Exposure,” Sensors, Vol. 21, No. 2, pp. 345-370, Jan. 2021. (Impact Factor: 3.5)
+엄주언, 박래현, 권태경, “딥러닝 모델의 밀집 적대적 공격과 희소 적대적 공격에 관한 연구,” 한국정보보호학회 동계학술대회 (CISC W21), Nov. 2021. (우수논문상 수상)
+임은지, 권태경, “배치 정보 기반 키 분배 기법의 배치 오류 시뮬레이션 모델링에 관한 연구,” 한국정보보호학회 동계학술대회 (CISC W21), Nov. 2021.
+진호용, 조민기, 안도현, 권태경, “리눅스 커널 함수 호출 그래프 추출 기법에 관한 연구,” 한국정보보호학회 동계학술대회 (CISC W21), Nov. 2021.
+박래현, 김재욱, 엄주언, 권태경, “딥러닝 적대적 예제와 퍼징기술 동향,” 정보과학회지, Vol. 39, No. 8, pp. 18-27, Aug. 2021.
+엄주언, 박래현, 김재욱, 권태경, “적대적 공격과 커버리지 기반 딥러닝 퍼징의 유효성 비교 분석,” 한국정보보호학회 하계학술대회 (CISC S21), Jun. 2021. (우수논문상 수상)
+김재욱, 박래현, 엄주언, 권태경, “심층 뉴럴 네트워크의 적대적 방어 기법 동향,” 한국정보보호학회 하계학술대회 (CISC S21), Jun. 2021.
+이현석, 황은비, 조민기, 권태경, “임베디드 소프트웨어 취약점 탐지를 위한 최신 보안기술 동향,” 한국군사과학기술학회 종합학술대회, Jun. 2021.
+황은비, 이현석, 조민기, 권태경, “펌웨어 퍼징을 위한 에뮬레이션 기술 동향,” 한국군사과학기술학회 종합학술대회, Jun. 2021.
+신민식, 권태경, “정상 사용자로 위장한 웹 공격 탐지 목적의 사용자 행위 분석 기법,” 정보보호학회논문지, Vol.31, no.3, pp. 365-371, Jun. 2021
+김영훈, 권태경, “협업 툴의 사용자 행위별 아티팩트 분석 연구 – 윈도우즈 및 안드로이드 환경의 Microsoft Teams를 대상으로,” 정보보호학회논문지, Vol. 31, No. 3, pp. 353-363, Apr. 2021.
+조민기, 정세연, 권태경, “비트스트림 역공학을 활용한 FPGA 하드웨어 악성기능 탐지 기법 연구,” 정보보호학회논문지, Vol. 31, No. 2, pp. 187-195, Apr. 2021.
+김재욱, 박래현, 권태경, “Analysis of Deep Learning Model Vulnerability According to Input Mutation,” 정보보호학회논문지, Vol. 31, No. 1, pp. 51-59, Feb. 2021.
+
+2020
+Leo Hyun Park, Jungbeen Yu, Hong-Koo Kang, Taejin Lee, and Taekyoung Kwon “Birds of a Feature: Intrafamily Clustering for Version Identification of Packed Malware,” IEEE Systems Journal, Vol. 14, pp. 4545-4556, Sep. 2020. (Impact Factor: 4.4)
+Sooyeon Shin, Taekyoung Kwon, “A Privacy-Preserving Authentication, Authorization, and Key Agreement Scheme for Wireless Sensor Networks in 5G-Integrated Internet of Things,” IEEE Access, Vol. 8, pp. 67555-67571, Apr. 2020.  (Impact Factor: 3.6)
+윤혜민,신수연, 권태경 “3D 환경을 고려한 무선 센서 네트워크의 키 사전 분배 기법 실험 연구,” 정보보호학회논문지, Vol.30, No.6, pp. 975-980, Dec. 2020.
+김서영,조민기,김종신, 권태경 “라이브러리 퍼징의 커버리지 향상 방법 연구,” 정보보호학회논문지, Vol. 30, No. 6, pp. 1079-1085, Dec. 2020.
+황은비, 정세연, 조민기, 권태경, “임베디드 디바이스 펌웨어 퍼징 기술의 동향 분석,” 한국정보보호학회 동계학술대회 (CISC W20), Nov. 2020.
+김영훈, 권태경, “협업 툴의 사용자 행위별 아티팩트 분석 연구– 윈도우즈 및 안드로이드 환경의 Microsoft Teams를 대상으로,” 한국정보보호학회 동계학술대회 (CISC W20), Nov. 2020.
+안도현, 조민기, 진호용, 권태경, “커널 어드레스 새니타이저 분석,” 한국정보보호학회 동계학술대회 (CISC W20), Nov. 2020.
+정세연, 황은비, 조민기, 권태경, “임베디드 펌웨어 테스트 최신 기술 동향,” 한국정보보호학회 동계학술대회 (CISC W20), Nov. 2020.
+박래현, 김재욱, 정수창, 권태경, “커버리지 기반 딥러닝 퍼징 기술의 유효성 검증,” 한국정보보호학회 동계학술대회 (CISC W20), Nov. 2020.(우수논문상 수상)
+정수창, 박래현, 권태경 “적대적 예시 탐지를 위한 뉴런 기반 커버리지 기법의 적합성 연구,” 한국정보보호학회 동계학술대회 (CISC W20), Nov. 2020.
+정세연, 조민기, 황은비, 권태경 “FPGA 기반 임베디드 시스템의 사이버 보안 위협 동향 분석,” 한국해군학회지, Vol. 3, No. 2, pp. 113-117, Sep. 2020.
+김슬기, 유상봉, 장윤, 권태경 “아이트래킹을 이용한 안전한 패스워드 입력 방법에 관한 연구 – 숄더 서핑 공격 대응을 중심으로,” 정보보호학회논문지, Vol. 30, No. 4, pp. 545-558, Aug. 2020.
+정세연, 조민기, 황은비, 권태경, “FPGA 기반 임베디드 시스템의 사이버 보안 위협 동향 분석,” 한국해군과학기술학회 춘계학술대회, Jul. 2020.
+조민기, 정세연, 황은비, 권태경, “임베디드 시스템 취약점 공격 탐지 기술 연구,” 한국해군과학기술학회 춘계학술대회, Jul. 2020.(우수논문상 수상)
+장재동, 조민기, 서예지, 정세연, 권태경, “FPGA의 Hardware Trojan 대응을 위한 기계학습 기반 탐지 기술 연구,” 한국인터넷정보학회논문지, Vol. 21, No. 2, pp. 109-119, Apr. 2020.
+
+2019
+Mingi Cho, Seoyoung Kim, and Taekyoung Kwon, “Intriguer: Field-Level Constraint Solving for Hybrid Fuzzing,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), pp. 515-530, Nov. 2019. (BK, 정보과학회 최우수학술대회)
+Seoyoung Kim, Seyeon Jeong, Mingi Cho, Soochang Chung, and Taekyoung Kwon, “POSTER: Evaluating Code Coverage for System Call Fuzzers,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), London, UK, Nov. 2019.
+Leo Hyun Park , Sangjin Oh, Jaeuk Kim, Soochang Chung, and Taekyoung Kwon, “POSTER: Effective Layers in Coverage Metrics for Deep Neural Networks,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), London, UK, Nov. 2019.
+Sooyeon Shin, Kyounghoon Kim, and Taekyoung Kwon, “Detection of malicious packet dropping attacks in RPL-based Internet of Things,” International Journal of Ad Hoc and Ubiquitous Computing, Vol. 31, pp. 133-141, Jun. 2019.
+Yeeun Ku, Leo Hyun Park, Sooyeon Shin, and Taekyoung Kwon, “Draw It As Shown: Behavioral Pattern Lock for Mobile User Authentication,” IEEE Access, Vol. 7, pp. 69363-69378, May. 2019.
+Sooyeon Shin and Taekyoung Kwon, “A Lightweight Three-Factor Authentication and Key Agreement Scheme in Wireless Sensor Networks for Smart Homes,” Sensors, Vol. 19, No. 9, Apr. 2019.
+Sangbong Yoo, Hong Ryeol Ryu, Hanbyul Yeon, Taekyoung Kwon, and Yun Jang, “Visual Analytics and Visualization for Android Security Risk,” Elsevier Journal of Computer Languages, Vol. 53, pp. 9-21, Aug. 2019.
+윤혜민, 김재욱, 황은비, 김해니, 권태경, “Windows 10 환경의 Box 클라우드 아티팩트 분석,” 정보보호학회지, Vol. 29, No. 6, pp. 29-37, Dec. 2019.
+정세연, 정수창, 김서영, 조민기, 권태경, “커버리지 기반 퍼징 최신 기술 분석,” 한국정보보호학회 동계학술대회 (CISC W19), Nov. 2019.
+황은비, 박래현, 권태경, “행위 기반의 지속인증을 위한 스마트폰 인증 연구 동향 분석,” 한국정보보호학회 동계학술대회 (CISC W19), Nov. 2019.
+김해니, 김재욱, 권태경, “시나리오 기반 이미지 개발을 통한 파일 카빙 도구 검증 방안 연구,” 정보보호학회논문지, Vol. 29, No. 4, pp. 835-845, Aug. 2019.
+김종신, 윤혜민, 권태경, “NS-3 시뮬레이션을 이용한 무선 센서 네트워크 FRP 프로토콜 구현 실험 연구,” 한국정보보호학회 하계학술대회 (CISC S19), Jun. 2019.
+조민기, 김서영, 정세연, 정수창, 권태경, “시스템 콜 퍼저의 코드 커버리지 성능 평가 방법 연구,” 한국정보보호학회 하계학술대회 (CISC S19), Jun. 2019.
+정수창, 박래현, 오상진, 김재욱, 권태경, “딥러닝 모델 검증을 위한 퍼징 기술 연구 동향,” 한국정보보호학회 하계학술대회 (CISC S19), Jun. 2019.
+오상진, 박래현, 권태경, “악성코드 분석의 Ground-Truth 향상을 위한 Unified Labeling과 Fine-Grained 검증,” 정보보호학회논문지, Vol. 29, No. 3, pp. 549-555, Jun. 2019.
+이영주, 구예은, 권태경, “행위 기반 인증을 위한 사용자 중심의 인증 요소 분석 연구,” 정보보호학회논문지, Vol. 29, No. 1, pp. 127-137, Feb. 2019.
+이준원, 권태경, “기계학습 기반 비트코인 채굴 난이도 예측 연구,” 정보보호학회논문지, Vol. 29, No. 1, pp. 225-234, Feb. 2019.
+
+2018
+Junghwan Yoon, Yezee Seo, Jaedong Jang, Mingi Cho, Jingoog Kim, Hyeonsook Kim and Taekyoung Kwon, “POSTER: A Bitstream Reverse Engineering Tool for FPGA Hardware Trojan Detection,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), Toronto, Canada, Oct. 2018.
+Yeeun Ku, Leo Hyun Park, Sooyeon Shin, and Taekyoung Kwon, “POSTER: A Guided Approach to Behavioral Authentication,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), Toronto, Canada, Oct. 2018.
+Mingi Cho, Seoyoung Kim, Yoochan Lee and Taekyoung Kwon, “Diving into OS Kernels to Trigger Deeper Bugs,” 13th USENIX Symposium on Operating Systems Design and Implementation (OSDI), Carlsbad, California, Oct. 2018. (poster)
+Jung Yeon Hwang, Stanislaw Jarecki, Taekyoung Kwon, Joohee Lee, Ji Sun Shin, Jiayu Xu, “Round-Reduced Modular Construction of Asymmetric Password-Authenticated Key Exchange,” in Proc. 11th Conference on Security and Cryptography for Networks (SCN), Amalfi, Italy, Sep. 2018.
+Youngjoo Lee, Wonseok Yang, and Taekyoung Kwon, “Data Transfusion: Pairing Wearable Devices and Its Implication on Security for Internet of Things,” IEEE Access, Vol. 6, pp. 48994-49006, Jul. 2018.
+Yezee Seo, Junghwan Yoon, Jaedong Jang, Mingi Cho, Hoon-Kyu Kim, and Taekyoung Kwon, “Poster: Towards Reverse Engineering FPGA Bitstreams for Static Hardware Trojan Detection,” Network and Distributed System Security Symposium (NDSS), San Diego, California, Feb. 2018.
+Leo Hyun Park, JungBeen Yu, and Taekyoung Kwon, “Poster: Exploring Family Features for Classification and Lineage Inference of Packed Malware,” Network and Distributed System Security Symposium (NDSS), San Diego, California, Feb. 2018. (Honorable Mention)
+Sooyeon Shin and Taekyoung Kwon, “Two-Factor Authenticated Key Agreement Supporting Unlinkability in 5G-Integrated Wireless Sensor Networks,” IEEE Access, Vol. 6, pp. 11229-11241, Jan. 2018.
+이동건, 권태경, “기계학습을 활용한 이더리움 미확인 스마트 컨트랙트 자동 분류 방안,” 정보보호학회논문지, Vol. 28, No. 6, pp. 1319-1328, Dec. 2018.
+김해니, 권태경, “모바일포렌식 가이드라인 현황 연구,” 한국정보보호학회 동계학술대회 (CISC W18), Dec. 2018.
+김서영, 권태경, “임베디드 리눅스 시스템의 보안 설정 검사 방법 연구,” 한국정보보호학회 동계학술대회 (CISC W18), Dec. 2018.
+김종신, 권태경, “위치기반 키 관리 기법을 적용한 무선센서네트워크 연구 동향 분석,” 한국정보보호학회 동계학술대회 (CISC W18), Dec. 2018.
+오상진, 박래현, 박준형, 권태경, “악성코드 패밀리명의 Ground-Truth를 위한 레이블링 기법 연구,” 한국정보보호학회 동계학술대회 (CISC W18), Dec. 2018. (우수논문상 수상)
+이유찬, 권태경, “macOS 커널에서의 보호기법과 우회방법 분석,” 한국정보보호학회 동계학술대회 (CISC W18), Dec. 2018.
+김승연, 구예은, 권태경, “스머지 기반의 스마트 기기 지문 인증 공격 연구,” 정보보호학회논문지, Vol. 28, No. 5, pp. 1113-1118, Oct. 2018.
+윤정환, 서예지, 장재동, 권태경, “BIL 비트스트림 역공학 도구 개선 연구,” 정보보호학회논문지, Vol. 28, No. 5, pp. 1225-1231, Oct. 2018.
+유정빈, 오상진, 박래현, 권태경, “하이브리드 특징 및 기계학습을 활용한 효율적인 악성코드 분류 시스템 개발 연구,” 정보보호학회논문지, Vol. 28, No. 5, pp. 1161-1167, Oct. 2018.
+윤정환, 서예지, 김훈규, 권태경, “BIL 비트스트림 역공학 도구 분석 연구,” 정보보호학회논문지, Vol. 28, No. 2, pp. 287-293, Apr. 2018.
+김승연, 권태경, “모바일 환경의 사용자 인증 기법에 대한 usable security 연구 동향,” 정보보호학회지, Vol. 28, No. 1, pp. 22-28, Feb. 2018.
+구예은, 권태경, “머신러닝 기반의 차세대 사용자 인증 연구 동향 분석,” 정보과학회지, Vol. 36, No. 2, pp. 43-48, Feb. 2018.
+
+2017
+Hoyeon Lee, Seungyeon Kim, and Taekyoung Kwon, “Here Is Your Fingerprint! Actual Risk versus User Perception of Latent Fingerprints and Smudges Remaining on Smartphones,” in Proc. the 33rd Annual Computer Security Applications Conference (ACSAC), Orlando, Florida, pp. 512-527, Dec. 2017. (BK, 정보과학회 우수학술대회)
+Youngjoo Lee, Wonseok Yang, and Taekyoung Kwon, “POSTER: Watch Out Your Smart Watch When Paired,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), Dallas, Texas, pp. 2527-2529, Nov. 2017.
+Seungyeon Kim, Hoyeon Lee, and Taekyoung Kwon, “POSTER: Rethinking Fingerprint Identification on Smartphones,” in Proc. the ACM Conference on Computer and Communications Security (ACM CCS), Dallas, Texas, pp. 2515-2517, Nov. 2017.
+Jungwoo Joh, Yezee Seo, Hoon-Kyu Kim, and Taekyoung Kwon, “Glitch Recall: A Hardware Trojan Exploiting Natural Glitches in Logic Circuits,” in Proc. the World Conference of Information Security Applications (WISA), Aug. 2017.
+Sangbong Yoo, HongRyeol Ryu, Hanbyul Yeon, Taekyoung Kwon, and Yun Jang, “Personal visual analytics for android security risk lifelog,” Proceedings of the 10th International Symposium on Visual Information Communication and Interaction, pp. 29-36, Aug. 2017.
+MinSik Shin, JungBeen Yu, YoungJin Yoon, and Taekyoung Kwon, “The Fuzzing Awakens: File Format-Aware Mutational Fuzzing on Smartphone Media Server Daemons,” in Proc. the 32nd International Conference on ICT Systems Security and Privacy Protection (IFIP SEC), Rome, Italy, pp. 219-232, May 2017. (BK, 정보과학회 최우수학술대회)
+Sooyeon Shin, Minwoo Kim, and Taekyoung Kwon, “Experimental Performance Analysis of Lightweight Block Ciphers and Message Authentication Codes for Wireless Sensor Networks,” International Journal of Distributed Sensor Networks, Vol. 13, No. 11, Nov. 2017.
+Jaewoo Choi, Jihyun Bang, LeeHyung Kim, Mirim Ahn, and Taekyoung Kwon, “Location-Based Key Management Strong Against Insider Threats in Wireless Sensor Networks,” IEEE Systems Journal, Vol. 11, Iss. 2, pp. 494-502, Jun. 2017.
+Sooyeon Shin and Taekyoung Kwon, “A Corrupted Cloud and Corrupted Multi-Cloud Identification Method for Batch Auditing in Cloud Storage Services,” Computer Systems Science & Engineering, Vol. 32, No. 2, Mar. 2017.
+이영주, 양원석, 권태경, “스마트워치 데이터 분석 및 위험도 평가,” 정보보호학회논문지, Vol. 27, No. 6, pp. 1483-1490, Dec. 2017.
+김경훈, 권태경, “모바일 핀테크 서비스에서 이용 가능한 인증 수단의 사용성, 안전성 분석 연구,” 정보보호학회논문지, Vol. 27, No. 4, pp. 843-853, Aug. 2017.
+유정빈, 신민식, 권태경, “기계 학습을 활용한 변종 악성코드 식별 연구 동향 분석,” 정보보호학회지, Vol. 27, No. 3, pp. 12-19, Jun. 2017.
+신민식, 유정빈, 권태경, “스마트폰 미디어 서버 데몬에 대한 파일 포맷 인식 기반의 퍼징 연구,” 정보보호학회논문지, Vol. 27, No. 3, pp. 541-548, Jun. 2017.
+양원석, 권태경, “자동화 공격과 릴레이 공격에 저항하는 Emerging Image Cue CAPTCHA 연구,” 정보보호학회논문지, Vol. 27, No. 3, pp. 531-539, Jun. 2017.
+이호연, 권태경, “지문 영상 복원 기반의 스마트 기기 지문 스머지 공격 연구,” 정보보호학회논문지, Vol. 27, No. 2, pp. 233-240, Apr. 2017.
+김민우, 김승연, 권태경, “안드로이드에서 앱 사용과 터치 정보를 이용한 행위 기반 사용자 인증 기술 연구,” 정보보호학회논문지, Vol. 27, No. 2, pp. 361-371, Apr. 2017.
+김경훈, 김승연, 권태경, “패스워드 강도 측정 방법 연구 동향,” 정보보호학회지, Vol. 27, No. 1, pp. 31-38, Feb. 2017.
+박래현, 유정빈, 박준형, 권태경, “동적 정보 기반 악성코드 그룹 분류 및 특징 연구,” 한국정보보호학회 동계학술대회 (CISC W17), Dec. 2017.
+구예은, 이호연, 권태경, “지속 인증을 위한 사용자 행위 정보 기반 특징 요소 별 성능 분석 연구,” 한국정보보호학회 동계학술대회 (CISC W17), Dec. 2017.
+
+2016
+Wonseok Yang, Youngjoo Lee, and Taekyoung Kwon, “The Bourne Security: Your Wearable Device Can Leak Your Sensitive Data in Locked States,” Annual Computer Security Applications Conference (ACSAC), 2016. (poster)
+JungBin Yu, MinSik Shin, Taejin Lee, Hong-Koo Kang, and Taekyoung Kwon, “The Malware Identity: Toward Efficient Identification of Malware Mutants,” Annual Computer Security Applications Conference (ACSAC), 2016. (poster)
+JongHyup Lee and Taekyoung Kwon, “Secure dissemination of software updates for intelligent mobility in future wireless networks,” EURASIP Journal on Wireless Communications and Networking, Vol. 2016, No. 1, pp. 250, Oct. 2016.
+Sooyeon Shin and Seulgi Kim and Jaewoo Choi and Taekyoung Kwon, “A Study on Detection and Detour Methods against Packet Dropping Attacks in IPv6-based IoT,” IT CoNvergence PRActice (INPRA), Vol. 4, No. 3, pp. 20-27, Sep. 2016.
+Minwoo Kim, Jihyun Bang, and Taekyoung Kwon, “LinkA: A link layer anonymization method based on bloom filter for authenticated IoT devices,” Intelligent Automation & Soft Computing, Vol. 22, Iss. 3, pp. 365-369, 2016.
+Taekyoung Kwon and Sarang Na, “SteganoPIN: Two-Faced Human-Machine Interface for Practical Enforcement of PIN Entry Security,” IEEE Transactions on Human-Machine Systems, Vol. 46, No. 1, pp. 143-150, Feb. 2016.
+JongHyup Lee, LeeHyung Kim, and Taekyoung Kwon, “FlexiCast: Energy-Efficient Software Integrity Checks to Build Secure Industrial Wireless Active Sensor Networks,” IEEE Transactions on Industrial Informatics, Vol. 12, No. 1, pp. 6-14, Feb. 2016.
+조현웅, 김슬기, 권태경, “오픈 소스 중복 제거 파일시스템에서의 완전 삭제,” 정보보호학회논문지, Vol. 26, No. 5, pp. 1141-1149, 2016.
+김민우, 권태경, “메시지 인증 코드에 대한 연구 동향,” 정보과학회논문지:정보통신, Vol. 43, No. 11, pp. 1245-1258, 2016.
+정성미, 권태경, “기계 학습 기반의 자동화된 스머지 공격과 패턴 락 시스템 안전성 분석,” 정보보호학회논문지, Vol. 26, No. 4, pp. 903-910, 2016.
+김승연, 권태경, “국내 사용자의 패스워드 사용 현황 분석,” 정보보호학회논문지, Vol. 26, No. 4, pp. 961-972, 2016.
+김민우, 권태경, “저사양 마이크로 컨트롤러에서 ARX 경량 암호를 위한 효율적인 Rotation 구현 방법 연구,” 정보보호학회논문지,  Vol. 26, No. 3, pp. 623-630, 2016.
+김경훈, 권태경, “국내 웹 사이트 패스워드 미터 분석,” 정보보호학회논문지, Vol. 26, No. 3, pp. 757-767, 2016.
+최재우, 권태경, “IPv6 기반의 사물인터넷 환경에서 악성 노드의 패킷 유실 공격 탐지 및 우회 기법 분석,” 정보보호학회논문지,  Vol. 26, No. 3, pp. 655-659, 2016.
+이호연, 권태경, “지문 영상 복원을 이용한 스마트 기기 지문 스머지 공격 연구,” 한국정보보호학회 동계학술대회 (CISC W16), 2016. (우수논문상 수상)
+유정빈, 신민식, 이태진, 강홍구, 권태경, “효율적인 악성코드 탐지를 위한 데이터마이닝 기반 악성코드 변종그룹 식별 방안 연구,” 한국정보보호학회 동계학술대회 (CISC W16), 2016.
+김민우, 김슬기, 이호연, 권태경, “앱 사용 정보와 터치 정보를 이용한 행위 기반 인증 기술,” 한국정보보호학회 동계학술대회 (CISC W16), 2016.
+양원석, 권태경, “CAPTCHA에 대한 연구 동향,” 한국정보보호학회 동계학술대회 (CISC W16), 2016.
+김용회, 권태경, “패킷 헤더 필드의 우선순위 비교 연구 : 수사단서 중심으로,” 한국정보보호학회 동계학술대회 (CISC W16), 2016.
+노재훈, 권태경, “악성코드에 자주 사용되는 API 정보를 이용한 유사도 비교 방법,” 한국정보보호학회 동계학술대회 (CISC W16), 2016.
+윤영진, 권태경, “iOS 보안 취약점 탐지를 위한 퍼징 연구,” 한국정보보호학회 하계학술대회 (CISC S16), 2016.
+조현웅, 권태경, “오픈 소스 중복 제거 파일시스템에서의 완전 삭제,” 한국정보보호학회 하계학술대회 (CISC S16), 2016.
+김경훈, 권태경, “국내 웹 사이트 패스워드 미터 정확성 분석,” 한국정보보호학회 하계학술대회 (CISC S16), 2016.
+
+2015
+Taekyoung Kwon and Jin Hong, “Analysis and Improvement of a PIN-Entry Method Resilient to Shoulder-Surfing and Recording Attacks,” IEEE Transactions on Information Forensics and Security, Vol. 10, Iss. 2, pp. 278-292, Feb. 2015.
+Sooyeon Shin, Seungyeon Kim, and Taekyoung Kwon, “Identification of Corrupted Cloud Storage in Batch Auditing for Multi-Cloud Environments,” AsiaARES 2015, pp.221-225, Nov. 2015.
+Kyu Young Choi, Jihoon Cho, Jung Yeon Hwang, and Taekyoung Kwon, “Constructing Efficient PAKE Protocols from Identity-Based KEM/DEM,” Information Security Applications (WISA), Lecture Notes in Computer Science, Vol. 2015, Springer-Verlag, pp.606-619, Jun. 2015.
+유홍렬, 장윤, 권태경, “안드로이드 OS에서 앱 설치 의사결정 지원을 위한 악성 앱 분류 시스템,” 정보과학회논문지:정보통신, Vol. 42, No. 12, pp. 1611-1622, Dec. 2015.
+김승연, 권태경, “패스워드의 표기 방식이 패스워드 생성에 미치는 영향,” 정보보호학회논문지, Vol. 25, No. 5, 2015.
+최재우, 김용현, 김주엽, 권태경, “무선 센서 네트워크에서 그리드 정보를 활용한 위치 기반 키 관리 연구,” 정보보호학회논문지, Vol. 25, No. 4, 2015.
+신수연, 권태경, “손상 클라우드 식별 가능한 다중 클라우드 일괄 감사 기법에 관한 연구,” 정보보호학회논문지, Vol. 25, No. 1, 2015.
+정성미, 권태경, “기계 학습을 이용한 자동화된 스머지 공격과 안드로이드 패턴 락 안전성 분석,” 2015 한국정보보호학회 동계학술대회 (CISC W15), 2015. (최우수논문상 수상)
+최재우, 안미림, 이종협, 권태경, “IoT 환경에서 다양한 서비스를 제공하는 기기 간에 보안 요소를 고려한 라우팅 기법 연구,” 2015 한국정보보호학회 하계학술대회, 2015.
+
+2014
+Sooyeon Shin and Taekyoung Kwon, “AAnA: Anonymous Authentication and Authorization based on Short Traceable Signatures,” International Journal of Information Security, Springer, Vol. 13, No. 5, pp. 477-495, Oct. 2014.
+Taekyoung Kwon, Sarang Na, and Sooyeon Shin, “Touch Pointer: Rethink Point-and-Click for Accurate Indirect Touch Interactions on Small Touchscreens,” IEEE Transactions on Consumer Electronics, Vol. 60, No. 3, pp. 285-293, Aug. 2014.
+Taekyoung Kwon, Sooyeon Shin, and Sarang Na, “Covert Attentional Shoulder Surfing: Human Adversaries Are More Powerful Than Expected,” IEEE Transactions on Systems, Man, and Cybernetics: Systems (Formerly, Part A), Vol. 44, No. 6, pp. 716-727, Jun. 2014.
+Taekyoung Kwon and Sarang Na, “TinyLock: Affordable Defense Against Smudge Attacks on Smartphone Pattern Lock Systems,” Computers & Security, Elsevier, Vol. 42, pp. 137-150, May 2014.
+JongHyup Lee and Taekyoung Kwon, “GENDEP: Location-Aware Key Management for General Deployment of Wireless Sensor Networks,” International Journal of Distributed Sensor Networks, Vol. 2014, Article ID. 490202, May 2014.
+Taekyoung Kwon, Sarang Na, and Sang-ho Park, “Drag-and-Type: A New Method for Typing with Virtual Keyboards on Small Touchscreens,” IEEE Transactions on Consumer Electronics, Vol. 60, Iss. 1, pp. 99-106, Feb. 2014.
+Taekyoung Kwon and Sarang Na, “SwitchPIN: Securing Smartphone PIN Entry with Switchable Keypads,” IEEE ICCE 2014, pp. 23-24, Jan. 2014.
+Sarang Na and Taekyoung Kwon, “RIK: A Virtual Keyboard Resilient to Spyware in Smartphones,” IEEE ICCE 2014, pp. 25-26, Jan. 2014.
+유홍렬, 홍모세, 권태경, “사용자의 패스워드 인증 행위 분석 및 피싱 공격시 대응방안 – 사용자 경험 및 HCI의 관점에서,” 한국인터넷정보학회, Vol. 15, No. 3, pp. 79-90, 2014.
+유홍렬, 정성미, 권태경, “새롭게 진화하는 위협의 패러다임 – 지능형 지속 위협(APT),” 전자공학회지, Vol. 41, No. 4, pp. 16-30, 2014.
+유홍렬, 권태경, “프라이버시 대시보드 : 안드로이드 OS 환경에서 민감정보 접근내역 확인을 위한 사용자 인터페이스 제안,” 한국정보과학회 동계학술대회, 2014.
+이재빈, 강지원, 권태경, “302 리다이렉트 공격에 대한 분석 및 대응방안,” 한국정보보호학회 동계학술대회 논문집 (CISC W14), 2014.
+홍모세, 권태경, “폰갭 기반의 하이브리드 앱 XSS 취약점 정적 탐지,” 한국정보보호학회 동계학술대회 논문집 (CISC W14), 2014.
+이건희, 박상호, 권태경, “NFC와 MDM을 이용한 안전한 회의 시스템,” 한국정보보호학회 동계학술대회 논문집 (CISC W14), 2014.
+노승훈, 권태경, “국내 모바일 환경 간편결제 서비스에 대한 비교 연구,” 한국경영정보학회 추계학술대회, 2014.
+유홍렬, 권태경, “안드로이드 권한의 위험을 판단하기 위한 평가척도에 관한 연구,” 2014년 한국컴퓨터종합학술대회 논문집, 2014.
+최재우, 권태경, “무선 센서 네트워크를 위한 위치 기반 키 관리 기법 개선 연구,” 한국정보보호학회 하계학술대회 논문집 (CISC S14), 2014.
+신수연, 이건희, 권태경, “프라이버시 보존 가능한 다중 클라우드와 다중 사용자의 일괄 감사 기법에 관한 연구,” 한국정보보호학회 하계학술대회 논문집 (CISC S14), 2014. (우수여성연구자상 수상)
+유홍렬, 최보윤 권태경, “유연한 대학 전공 트랙 운영을 통한 융합형 정보보호 전문인력 양성방안,” 한국정보보호학회 하계학술대회 논문집 (CISC S14), 2014.
+노승훈, 권태경, “개인정보 취급방침 읽기에 소요되는 시간 측정 연구,” 한국경영정보학회 춘계공동학술대회, pp. 896-899, 2014.
+
+2013
+Kwantae Cho, Minho Jo, Taekyoung Kwon, Hsiao-Hwa Chen, and Dong Hoon Lee, “Classification and Experimental Analysis for Clone Detection Approaches in Wireless Sensor Networks,” IEEE Systems Journal, Vol. 7, No. 1, pp.26-35, Mar. 2013.
+Taekyoung Kwon, Sarang Na, and Sooyeon Shin, “Touch Pointer: Rethink Point-and-Click for Accurate Indirect Touch Interactions on Small Touchscreens,” IEEE ICCE 2013, pp. 600-601, Jan. 2013.
+Taekyoung Kwon, Sarang Na, and Sang-ho Park, “Drag-and-Type: A New Method for Typing with Virtual Keyboards on Small Touchscreens,” IEEE ICCE 2013, pp. 460-461, Jan. 2013.
+유홍렬, 홍모세, 권태경, “피싱 및 파밍 공격에 의한 다수의 패스워드 유출 요인에 관한 연구,” 정보보호학회논문지, Vol. 23, No. 6, pp. 1225-1229, 2013.
+나사랑, 권태경, “스마트폰 환경에서 스파이웨어에 저항하는 동적 이미지 기반 가상 키보드 기법,” 정보보호학회논문지, Vol. 23, No. 6, pp. 1219-1223, 2013.
+박상호, 김현진, 권태경, “안드로이드 스마트폰 암호 사용 앱 보안 분석 및 대응,” 정보보호학회논문지, Vol. 23, No. 6, pp. 1049-1055, 2013.
+박상호, 권태경, “안드로이드 암호 사용 앱 보안 분석,” 한국정보보호학회 동계학술대회 논문집 (CISC W13), Vol. 23, No. 2, pp. 111-114, 2013.
+홍모세, 유홍렬, 권태경, “사용자의 무의식적인 인증 과정이 패스워드 유출에 미치는 영향 – 피싱(Phishing)을 중심으로,” 한국인터넷정보학회 추계학술발표대회 논문집, Vol. 14, No. 2, pp. 73-74, 2013. (우수논문상 수상)
+박상호, 권태경, “안드로이드 앱을 위한 플랫폼 보안 분석,” 한국인터넷정보학회 추계학술발표대회 논문집, Vol. 14, No. 2, pp. 79-80, 2013.
+나사랑, 권태경, “스마트폰 환경에서 숄더 서핑과 스파이웨어에 저항하는 패스워드 입력 기법,” 한국인터넷정보학회 추계학술발표대회 논문집, Vol. 14, No. 2, pp. 77-78, 2013.

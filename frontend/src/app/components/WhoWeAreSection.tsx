@@ -6,14 +6,17 @@ export function WhoWeAreSection() {
   const isInView = useInView(ref, { once: true });
 
   const words = ["저희가", "연구합니다."];
-  const subtitles = ["권태경 교수님 지도 하에", "AI 보안의 새로운 기준을 만듭니다."];
+  const subtitles = [
+    "권태경 교수님 지도 하에",
+    "AI 보안의 새로운 기준을 만듭니다.",
+  ];
 
   return (
     <section
       ref={ref}
-      className="min-h-screen flex items-center bg-white px-6 snap-start snap-always"
+      className="relative min-h-[calc(100dvh-82px)] flex items-center bg-white px-6 pt-16 pb-28 snap-start snap-always overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16">
         <div className="space-y-6">
           <div className="space-y-2">
             {words.map((word, index) => (
@@ -64,15 +67,9 @@ export function WhoWeAreSection() {
           >
             <div className="text-sm text-[#1A5FB4] font-semibold">3대 연구 분야</div>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">
-                AI 보안
-              </span>
-              <span className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">
-                딥페이크 탐지
-              </span>
-              <span className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">
-                취약성 탐지
-              </span>
+              <span className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">AI 보안</span>
+              <span className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">딥페이크 탐지</span>
+              <span className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">취약성 탐지</span>
             </div>
           </motion.div>
 
@@ -83,19 +80,17 @@ export function WhoWeAreSection() {
             className="bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-2"
           >
             <div className="text-sm text-[#1A5FB4] font-semibold">세계 최우수 학술대회</div>
-            <div className="text-gray-900 font-mono text-sm">
-              IEEE · USENIX · ICCV · ISSTA
-            </div>
+            <div className="text-gray-900 font-mono text-sm">IEEE · USENIX · ICCV · ISSTA</div>
           </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-x-0 bottom-0 translate-y-[35%] z-0 pointer-events-none select-none">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 0.08 } : {}}
+          animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
-          className="text-[80px] font-black text-gray-900 whitespace-nowrap"
+          className="whitespace-nowrap text-[clamp(50px,7.5vw,200px)] leading-none tracking-tight font-black text-gray-900/10 text-center"
         >
           AI Security · Deepfake · Vulnerability
         </motion.div>

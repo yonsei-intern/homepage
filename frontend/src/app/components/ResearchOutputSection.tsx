@@ -1,180 +1,93 @@
-import { motion, useInView } from "motion/react";
+﻿import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { FileText, Star, Book, ArrowRight } from "lucide-react";
+
+type NewsItem = {
+  year: string;
+  source: string;
+  title: string;
+  sub?: string;
+};
+
+const LATEST_NEWS: NewsItem[] = [
+  {
+    year: "2025",
+    source: "보안뉴스",
+    title: "🔗 [2025 AI 보안 솔루션 리포트] AI 보안 솔루션, 능동형 AI와 XAI로 진짜 AI가 되다",
+  },
+  {
+    year: "2025",
+    source: "베테랑경찰",
+    title: "🔗 \"텔레그램 협력, 금단 영역 넘은 거죠\"…사이버 수사는 진화 중",
+  },
+  {
+    year: "2025",
+    source: "KIS 칼럼",
+    title: "🔗 [한국정보보호학회 칼럼] AI 모델 보안과 안전 그리고 신뢰",
+  },
+  {
+    year: "2025",
+    source: "IEEE TIFS",
+    title: "Amplifying Training Data Exposure through Fine-Tuning with Pseudo-Labeled Memberships",
+    sub: "IEEE Transactions on Information Forensics and Security · Impact Factor: 8",
+  },
+  {
+    year: "2025",
+    source: "RAID",
+    title: "Red-Teaming LLMs with Token Control Score: Efficient, Universal, and Transferable Jailbreaks",
+    sub: "Research in Attacks, Intrusions, and Defenses · BK, 정보과학회 우수학술대회",
+  },
+];
 
 export function ResearchOutputSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const eyebrow = "RESEARCH OUTPUT";
+  const ref = useRef<HTMLElement | null>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <section
       id="publications"
       ref={ref}
-      className="min-h-screen flex items-center bg-[#fafbff] px-6 py-24"
+      className="relative min-h-screen flex items-center bg-[#fafbff] px-6 py-24 pb-24 overflow-x-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full space-y-12">
-        <div className="space-y-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            className="text-xs tracking-widest text-[#1A5FB4] uppercase"
-          >
-            {eyebrow.split("").map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.3, delay: index * 0.04 }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.div>
+      <div className="relative z-10 max-w-6xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.45 }}
+          className="mb-7"
+        >
+          <div className="text-[11px] tracking-[0.18em] text-[#1A5FB4] uppercase mb-1">Latest News</div>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#0a0a0a]">Latest News</h2>
+        </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-4xl md:text-5xl font-bold"
-          >
-            프로젝트 · 특허 · 논문
-          </motion.h2>
+        <div className="border-t border-b border-gray-200 bg-white">
+          {LATEST_NEWS.map((item, index) => (
+            <motion.article
+              key={`${item.source}-${index}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.35, delay: 0.05 + index * 0.06 }}
+              className="grid grid-cols-[62px_84px_1fr] md:grid-cols-[76px_104px_1fr] gap-3 md:gap-5 px-3 md:px-5 py-3.5 md:py-4.5 border-b border-gray-100 last:border-b-0"
+            >
+              <div className="text-sm md:text-base font-semibold text-[#1b1f24]">{item.year}</div>
+              <div className="text-xs md:text-sm font-semibold text-[#2f58ff] self-start">{item.source}</div>
+              <div>
+                <div className="text-sm md:text-base leading-snug font-medium text-[#1b1f24]">{item.title}</div>
+                {item.sub ? <div className="mt-1 text-xs md:text-sm text-gray-500">{item.sub}</div> : null}
+              </div>
+            </motion.article>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="bg-white border border-gray-200 rounded-2xl p-8 space-y-6"
-            id="projects"
-          >
-            <div className="flex items-center gap-3">
-              <FileText className="w-6 h-6 text-[#1A5FB4]" />
-              <div>
-                <div className="font-bold text-xl">Projects</div>
-                <div className="text-sm text-gray-500">진행 중인 연구</div>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                { title: "AI 모델 취약점 자동 평가 플랫폼", period: "2024–진행 중" },
-                { title: "딥페이크 탐지 일반화 모델 개발", period: "2023–2024" },
-                { title: "LLM 기반 퍼징 자동화", period: "2024" },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.9 + index * 0.08 }}
-                  className="pb-4 border-b border-gray-100 last:border-0"
-                >
-                  <div className="font-medium text-sm mb-1">{item.title}</div>
-                  <div className="text-xs text-gray-500">{item.period}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 1.2 }}
-              className="flex items-center gap-2 text-sm text-[#1A5FB4] hover:gap-3 transition-all"
-            >
-              See more <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="bg-white border border-gray-200 rounded-2xl p-8 space-y-6"
-            id="patents"
-          >
-            <div className="flex items-center gap-3">
-              <Star className="w-6 h-6 text-[#1A5FB4]" />
-              <div>
-                <div className="font-bold text-xl">Patents</div>
-                <div className="text-sm text-gray-500">등록 및 출원</div>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                { title: "딥페이크 탐지 방법 및 시스템", status: "국내 등록" },
-                { title: "AI 모델 취약점 분석 장치", status: "국내 출원" },
-                { title: "메타버스 연속 인증 방법", status: "국제 출원" },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 1.0 + index * 0.08 }}
-                  className="pb-4 border-b border-gray-100 last:border-0"
-                >
-                  <div className="font-medium text-sm mb-1">{item.title}</div>
-                  <div className="text-xs text-gray-500">{item.status}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 1.3 }}
-              className="flex items-center gap-2 text-sm text-[#1A5FB4] hover:gap-3 transition-all"
-            >
-              See more <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="bg-white border border-gray-200 rounded-2xl p-8 space-y-6"
-          >
-            <div className="flex items-center gap-3">
-              <Book className="w-6 h-6 text-[#1A5FB4]" />
-              <div>
-                <div className="font-bold text-xl">Publications</div>
-                <div className="text-sm text-gray-500">논문 발표</div>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                { title: "Red-Teaming LLMs with Token Control Score", venue: "RAID 2025" },
-                { title: "BoKASAN: Binary-only Kernel Address Sanitizer", venue: "USENIX Sec 2023" },
-                { title: "Fuzzing JS Interpreters with RL Mutation", venue: "ISSTA 2024" },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 1.1 + index * 0.08 }}
-                  className="pb-4 border-b border-gray-100 last:border-0"
-                >
-                  <div className="font-medium text-sm mb-1">{item.title}</div>
-                  <div className="text-xs text-gray-500">{item.venue}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 1.4 }}
-              className="flex items-center gap-2 text-sm text-[#1A5FB4] hover:gap-3 transition-all"
-            >
-              See more <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.35 }}
+          className="mt-5"
+        >
+          <button type="button" className="inline-flex items-center gap-2 text-[#1A5FB4] hover:text-[#164a94] text-sm font-medium">
+            더 보러가기 →
+          </button>
+        </motion.div>
       </div>
     </section>
   );
