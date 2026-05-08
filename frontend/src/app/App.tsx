@@ -1,10 +1,6 @@
 ﻿import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState, type ReactNode } from "react";
 import { Search, X } from "lucide-react";
-import { ResearchSection } from "./components/ResearchSection";
-import { PeopleSection } from "./components/PeopleSection";
-import { ResearchOutputSection } from "./components/ResearchOutputSection";
-import { ContactSection } from "./components/ContactSection";
 import { JailbreakChatPage } from "./components/JailbreakChatPage";
 import {
   buildPublicationData,
@@ -116,115 +112,209 @@ function HomeSection({
   onNavigate: (tab: TabKey) => void;
   onTry: () => void;
 }) {
+  const researchCards = [
+    {
+      number: "01",
+      category: "AI SECURITY",
+      title: "AI보안",
+      lines: [
+        "생성형 AI 기반 시스템의 정보 유출, 프롬프트 주입, 모델 오염 등 AI 고유 취약점을 분석합니다.",
+        "실전 공격 시나리오 기반으로 방어 기법을 설계하고 검증합니다.",
+      ],
+      showTryButton: true,
+    },
+    {
+      number: "02",
+      category: "DEEPFAKE DETECTION",
+      title: "딥페이크탐지",
+      lines: [
+        "in-the-wild 딥페이크 콘텐츠를 기반으로 범용 성능을 갖춘 탐지 모델을 연구합니다.",
+        "압축, 노이즈, 다양한 환경 변화에서도 안정적으로 동작하도록 고도화합니다.",
+      ],
+      showTryButton: false,
+    },
+    {
+      number: "03",
+      category: "VULNERABILITY DETECTION",
+      title: "취약점탐지",
+      lines: [
+        "퍼징, 심볼릭 실행, 정적/동적 분석 기법에 AI를 접목해 취약점 탐지를 자동화합니다.",
+        "코드, 테스트 로그, 트레이스 분석을 통해 보안 탐지 정확성을 높입니다.",
+      ],
+      showTryButton: false,
+    },
+  ] as const;
+
+  const people = [
+    "LEOHYUN PARK",
+    "YOONSIK KIM",
+    "EUNBI HWANG",
+    "BYUNGCHUL KIM",
+    "SANGSOO HAN",
+  ] as const;
+
+  const publicationItems = [
+    'Jeewoo Jung, Taekyoung Kwon, "Enhancing Differential Fuzzing of Crypto Libraries", ICISC, 2024.',
+    'Leo Hyun Park, Jaeuk Kim, Myung Gyo Oh, Jaewoo Park, and Taekyoung Kwon, "Generating Adversarial Training", ACM Workshop on Artificial Intelligence Security, 2024.',
+    'Jueon Eom, Seyeon Jeong, and Taekyoung Kwon, "Fuzzing JavaScript Interpreters", ISSTA, 2024.',
+    'Mingi Cho, Dohyeon An, Hoyong Jin, and Taekyoung Kwon, "BoKASAN", USENIX Security, 2023.',
+    'Leo Hyun Park, Soochang Chung, Jaeuk Kim, and Taekyoung Kwon, "Grad Neurocomputing", Elsevier, 2023.',
+  ] as const;
+
+  const patentItems = [
+    'Jeewoo Jung, Taekyoung Kwon, "Enhancing Differential Fuzzing of Crypto Libraries", ICISC, 2024.',
+    'Leo Hyun Park, Jaeuk Kim, Myung Gyo Oh, Jaewoo Park, and Taekyoung Kwon, "Generating Adversarial Training", ACM Workshop on Artificial Intelligence Security, 2024.',
+    'Jueon Eom, Seyeon Jeong, and Taekyoung Kwon, "Fuzzing JavaScript Interpreters", ISSTA, 2024.',
+    'Mingi Cho, Dohyeon An, Hoyong Jin, and Taekyoung Kwon, "BoKASAN", USENIX Security, 2023.',
+    'Leo Hyun Park, Soochang Chung, Jaeuk Kim, and Taekyoung Kwon, "Grad Neurocomputing", Elsevier, 2023.',
+  ] as const;
+
   return (
-    <motion.div
-      key="home-content"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="h-full w-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory scrollbar-hide"
-    >
-      <section className="snap-start min-h-[calc(100dvh-82px)] relative bg-white overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto min-h-[calc(100dvh-82px)] px-6 md:px-8 py-12 md:py-16 grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] gap-10 md:gap-12 items-center">
-          <div className="text-left max-w-2xl">
-            <p className="text-base md:text-lg font-semibold text-[#2563eb]">YONSEI UNIVERSITY</p>
-            <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-[#0f172a]">
+    <div className="w-full overflow-x-hidden bg-[#f4f4f4] text-[#0f2448]">
+      <section className="bg-[#f4f4f4]">
+        <div className="mx-auto max-w-7xl px-6 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-stretch">
+          <div className="flex flex-col justify-center max-w-2xl">
+            <p className="text-xl font-semibold text-[#2f58ff]">YONSEI UNIVERSITY</p>
+            <h1 className="mt-5 text-5xl md:text-7xl font-extrabold tracking-tight text-[#111a34]">
               AI Security LAB
             </h1>
-            <h2 className="mt-4 text-2xl md:text-3xl font-semibold leading-snug text-[#334155]">
+            <h2 className="mt-8 text-3xl md:text-5xl font-bold leading-snug text-[#2d3f61]">
               연세대학교 정보대학원
               <br />
               정보보호&AI보안연구실
             </h2>
-            <p className="mt-6 text-base md:text-lg leading-relaxed text-[#475569]">
+            <p className="mt-8 text-lg md:text-2xl leading-relaxed text-[#6b7b95]">
               권태경 교수님 지도하에 저희 정보보호/AI보안 연구실은 인공지능 기술의 급속한 발전이 가져온 새로운 보안 과제에 대응하기 위해
               AI 기반 보안 위협 분석 및 대응 기술을 중심으로 다양한 주제를 연구하고 있습니다.
             </p>
           </div>
-          <div className="h-[48vh] min-h-[300px] md:h-[62vh] md:min-h-[380px] max-h-[540px] rounded-3xl bg-gray-200 md:translate-x-3 flex items-center justify-center">
-            <span className="text-3xl md:text-5xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+          <div className="min-h-[280px] md:min-h-[560px] bg-[#d0d0d0] flex items-center justify-center">
+            <span className="text-4xl md:text-6xl font-semibold tracking-[0.14em] text-[#a3abb6]">TBD</span>
           </div>
         </div>
-
-        <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center text-[#64748b]"
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <span className="text-xs tracking-[0.16em]">SCROLL DOWN</span>
-          <span className="text-base leading-none">↓</span>
-        </motion.div>
       </section>
 
-      <ResearchSection
-        number="01"
-        category="AI SECURITY"
-        showTryButton
-        title="AI 보안"
-        description={[
-          "생성형 AI 기반 시스템의 정보 유출, 프롬프트 주입, 모델 오염 등 AI 고유 취약점을 분석합니다.",
-          "실전 공격 시나리오 기반으로 방어 기법을 설계하고 검증합니다.",
-        ]}
-        tags={["Jailbreak", "Prompt Injection", "Red-Teaming", "LLM Security"]}
-        papers={[
-          { title: "Red-Teaming LLMs with Token Control Score", venue: "RAID 2025" },
-          { title: "Amplifying Training Data Exposure through Fine-Tuning", venue: "IEEE TIFS 2025" },
-          { title: "LeakGuard: Detecting Attribute Leakage in Diffusion Models", venue: "WISA 2025" },
-        ]}
-        onLearnMore={() => onNavigate("publications")}
-        onTry={onTry}
-      />
+      <section className="mx-auto max-w-7xl px-6 pt-8 pb-14 md:pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          {researchCards.map((card) => (
+            <article key={card.number} className="space-y-4">
+              <div className="text-[92px] leading-none font-extrabold text-[#e4e7eb]">{card.number}</div>
+              <div className="text-xs tracking-[0.2em] text-[#6e8bcf] uppercase">{card.category}</div>
+              <h3 className="text-[46px] leading-[1.05] font-black text-[#0f172a]">{card.title}</h3>
+              <div className="space-y-2">
+                {card.lines.map((line) => (
+                  <p key={line} className="text-base md:text-lg leading-relaxed text-[#5b6c87]">
+                    {line}
+                  </p>
+                ))}
+              </div>
+              <div className="flex items-center gap-2.5 pt-1">
+                <button
+                  type="button"
+                  onClick={() => onNavigate("publications")}
+                  className="border border-[#cfd7e6] bg-[#f4f4f4] px-3 py-1.5 text-sm font-medium text-[#3d64b1]"
+                >
+                  더 알아보기 →
+                </button>
+                {card.showTryButton ? (
+                  <button
+                    type="button"
+                    onClick={onTry}
+                    className="border border-[#2d5cb6] bg-[#2d5cb6] px-3 py-1.5 text-sm font-semibold text-white"
+                  >
+                    체험해보기 →
+                  </button>
+                ) : null}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      <ResearchSection
-        number="02"
-        category="DEEPFAKE DETECTION"
-        title="딥페이크 탐지"
-        description={[
-          "in-the-wild 딥페이크 콘텐츠를 기반으로 범용 성능을 갖춘 탐지 모델을 연구합니다.",
-          "압축, 노이즈, 다양한 환경 변화에서도 안정적으로 동작하도록 고도화합니다.",
-        ]}
-        tags={["Face Anti-Spoofing", "GAN Detection", "Multi-View", "Robustness"]}
-        papers={[
-          { title: "Multi-View Slot Attention Using Paraphrased Texts", venue: "ICCV 2025" },
-          { title: "On the Correlation Between Detection and Image Quality", venue: "WDC 2024" },
-          { title: "Coexistence of Deepfake Defenses", venue: "IEEE Access 2024" },
-        ]}
-        onLearnMore={() => onNavigate("publications")}
-      />
+      <section className="mx-auto max-w-7xl px-6 py-10">
+        <div className="mb-7">
+          <div className="text-xs tracking-[0.2em] text-[#9aaecd] uppercase">People</div>
+          <h2 className="mt-2 text-[52px] font-extrabold text-[#0f172a]">연구실 구성원</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {people.map((name) => (
+            <article key={name} className="space-y-3">
+              <div className="h-[320px] bg-[#d7dbe1] flex items-center justify-center">
+                <span className="text-5xl font-semibold tracking-[0.14em] text-[#acb4c0]">TBD</span>
+              </div>
+              <h3 className="border-t border-[#cfd4dd] pt-3 text-[30px] font-bold text-[#293a58]">{name}</h3>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      <ResearchSection
-        number="03"
-        category="VULNERABILITY DETECTION"
-        title="취약점 탐지"
-        description={[
-          "퍼징, 심볼릭 실행, 정적/동적 분석 기법에 AI를 접목해 취약점 탐지를 자동화합니다.",
-          "코드, 테스트 로그, 트레이스 분석을 통해 보안 탐지 정확성을 높입니다.",
-        ]}
-        tags={["Fuzzing", "RL Mutation", "Symbolic Execution", "NIDS"]}
-        papers={[
-          { title: "Fuzzing JavaScript Interpreters with Coverage-Guided RL", venue: "ISSTA 2024" },
-          { title: "BoKASAN: Binary-only Kernel Address Sanitizer", venue: "USENIX Sec 2023" },
-          { title: "Enhancing Differential Fuzzing with Hybrid Fuzzing", venue: "ICISC 2024 (Best Paper)" },
-        ]}
-        onLearnMore={() => onNavigate("publications")}
-      />
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
+          <article>
+            <h2 className="text-[48px] font-bold text-[#1c2d4e]">Publication</h2>
+            <ol className="mt-5 space-y-3">
+              {publicationItems.map((item, index) => (
+                <li key={item} className="grid grid-cols-[28px_1fr] gap-3 text-[#526685]">
+                  <span className="font-semibold text-[#2a4f95]">{index + 1}.</span>
+                  <span className="text-base leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ol>
+          </article>
+          <article>
+            <h2 className="text-[48px] font-bold text-[#1c2d4e]">Patents</h2>
+            <ol className="mt-5 space-y-3">
+              {patentItems.map((item, index) => (
+                <li key={item} className="grid grid-cols-[28px_1fr] gap-3 text-[#526685]">
+                  <span className="font-semibold text-[#2a4f95]">{index + 1}.</span>
+                  <span className="text-base leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ol>
+          </article>
+        </div>
+      </section>
 
-      <div className="snap-start">
-        <PeopleSection />
-      </div>
-      <div className="snap-start">
-        <ResearchOutputSection />
-      </div>
-      <div className="snap-start">
-        <ContactSection />
-      </div>
-    </motion.div>
+      <section className="bg-[#05080f] px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-[52px] font-bold text-white">
+              찾아오시는 <span className="text-[#2f58ff]">길</span>
+            </h2>
+            <p className="text-[#a1adbf] text-sm mt-1">Location</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-8 text-white">
+              <div>
+                <h3 className="text-3xl font-bold">교수님 연구실</h3>
+                <p className="mt-1 text-[#b6c0d0] text-xl">연세대학교 새천년관 407호</p>
+                <p className="mt-1 text-[#4f83ff] text-xl">02-2123-4523</p>
+              </div>
+              <div>
+                <h3 className="text-3xl font-bold">연구실</h3>
+                <p className="mt-1 text-[#b6c0d0] text-xl">연세대학교 새천년관 109호, 110호</p>
+                <p className="mt-1 text-[#4f83ff] text-xl">02-2123-4197</p>
+              </div>
+              <p className="text-[#b6c0d0] text-xl">서울특별시 서대문구 연세로 50</p>
+            </div>
+            <div className="h-[360px] overflow-hidden border border-[#2b3342] shadow-[0_20px_55px_rgba(0,0,0,0.45)]">
+              <iframe
+                src="https://maps.google.com/maps?q=Yonsei%20University%20Seoul&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Yonsei University Map"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
-
-// ??? Recruit ??????????????????????????????????????????????????????????????????
-// ??? Recruit ??????????????????????????????????????????????????????????????????
-
 function RecruitSection() {
   const [copied, setCopied] = useState<string | null>(null);
 
@@ -1523,9 +1613,11 @@ export default function App() {
       {/* ?聙?聙 Main ?聙?聙 */}
       <main
         className={
-          (isHome || isContact) && !showJailbreak
+          !showJailbreak && isContact
             ? "h-[calc(100dvh-82px)] w-full no-text-reveal"
-            : "max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14 no-text-reveal"
+            : !showJailbreak && isHome
+              ? "w-full no-text-reveal"
+              : "max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14 no-text-reveal"
         }
       >
         <AnimatePresence mode="wait">
@@ -1540,6 +1632,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 
