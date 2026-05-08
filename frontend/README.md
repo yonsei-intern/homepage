@@ -1,4 +1,4 @@
-# C¾È
+# Cï¿½ï¿½
 
 This project is exported from Figma Make.
 
@@ -15,7 +15,7 @@ npm run dev
 docker compose up --build
 ```
 
-Open `http://localhost:5173`.
+Open `http://localhost:5176`.
 
 To stop:
 
