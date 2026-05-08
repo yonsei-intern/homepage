@@ -1,4 +1,4 @@
-@custom-variant dark (&:is(.dark *));
+﻿@custom-variant dark (&:is(.dark *));
 
 :root {
   --font-size: 16px;
@@ -197,5 +197,27 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@layer base {
+  /* Disable text reveal/slide animations in main and tab content */
+  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="opacity"] {
+    opacity: 1 !important;
+  }
+
+  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="transform"] {
+    transform: none !important;
+  }
+
+  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="filter"] {
+    filter: none !important;
+  }
+
+  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="opacity"],
+  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="transform"],
+  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="filter"] {
+    transition: none !important;
+    animation: none !important;
   }
 }

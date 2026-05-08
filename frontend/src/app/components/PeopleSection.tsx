@@ -181,7 +181,9 @@ function ProfileCard({ member }: { member: Member }) {
   return (
     <article className="w-[300px] md:w-[340px] h-[520px] p-0">
       <div className="h-full w-full flex flex-col">
-        <div className="flex-1 bg-[#e6e9ee]" />
+        <div className="flex-1 bg-[#e6e9ee] flex items-center justify-center">
+          <span className="text-xl md:text-2xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+        </div>
 
         <div className="mt-3 bg-[#eef2f7] px-3 py-3 text-center">
           <div className="text-lg font-semibold uppercase tracking-wide text-[#1f2937]">{member.name}</div>
@@ -191,3 +193,4 @@ function ProfileCard({ member }: { member: Member }) {
     </article>
   );
 }
+

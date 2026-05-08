@@ -1,9 +1,6 @@
 ﻿import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState, type ReactNode } from "react";
-import { TerminalBoot } from "./components/TerminalBoot";
 import { Search, X } from "lucide-react";
-import { ThreatSection } from "./components/ThreatSection";
-import { WhoWeAreSection } from "./components/WhoWeAreSection";
 import { ResearchSection } from "./components/ResearchSection";
 import { PeopleSection } from "./components/PeopleSection";
 import { ResearchOutputSection } from "./components/ResearchOutputSection";
@@ -127,8 +124,37 @@ function HomeSection({
       exit={{ opacity: 0 }}
       className="h-full w-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory scrollbar-hide"
     >
-      <ThreatSection />
-      <WhoWeAreSection />
+      <section className="snap-start min-h-[calc(100dvh-82px)] relative bg-white overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto min-h-[calc(100dvh-82px)] px-6 md:px-8 py-12 md:py-16 grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] gap-10 md:gap-12 items-center">
+          <div className="text-left max-w-2xl">
+            <p className="text-base md:text-lg font-semibold text-[#2563eb]">YONSEI UNIVERSITY</p>
+            <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-[#0f172a]">
+              AI Security LAB
+            </h1>
+            <h2 className="mt-4 text-2xl md:text-3xl font-semibold leading-snug text-[#334155]">
+              연세대학교 정보대학원
+              <br />
+              정보보호&AI보안연구실
+            </h2>
+            <p className="mt-6 text-base md:text-lg leading-relaxed text-[#475569]">
+              권태경 교수님 지도하에 저희 정보보호/AI보안 연구실은 인공지능 기술의 급속한 발전이 가져온 새로운 보안 과제에 대응하기 위해
+              AI 기반 보안 위협 분석 및 대응 기술을 중심으로 다양한 주제를 연구하고 있습니다.
+            </p>
+          </div>
+          <div className="h-[48vh] min-h-[300px] md:h-[62vh] md:min-h-[380px] max-h-[540px] rounded-3xl bg-gray-200 md:translate-x-3 flex items-center justify-center">
+            <span className="text-3xl md:text-5xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+          </div>
+        </div>
+
+        <motion.div
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center text-[#64748b]"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <span className="text-xs tracking-[0.16em]">SCROLL DOWN</span>
+          <span className="text-base leading-none">↓</span>
+        </motion.div>
+      </section>
 
       <ResearchSection
         number="01"
@@ -397,11 +423,10 @@ function RecruitSection() {
                   <button
                     type="button"
                     onClick={() => copyValue(item.key, item.value)}
-                    className={`justify-self-start md:justify-self-end px-2.5 py-1 text-[0.8rem] rounded transition-colors ${
-                      copied === item.key
-                        ? "bg-[#123f86] text-white"
-                        : "bg-[#f1f4f9] text-[#123f86] hover:bg-[#e6ebf3]"
-                    }`}
+                    className={`justify-self-start md:justify-self-end px-2.5 py-1 text-[0.8rem] rounded transition-colors ${copied === item.key
+                      ? "bg-[#123f86] text-white"
+                      : "bg-[#f1f4f9] text-[#123f86] hover:bg-[#e6ebf3]"
+                      }`}
                   >
                     {copied === item.key ? "복사됨" : "복사"}
                   </button>
@@ -549,7 +574,9 @@ function ProfessorSection() {
         <section className="pt-1">
           <div className="grid lg:grid-cols-[340px_minmax(0,1fr)] gap-8 lg:gap-14 items-stretch">
             <div className="w-full max-w-[340px]">
-              <div className="w-full h-full min-h-[430px] bg-[#e5e8ed]" />
+              <div className="w-full h-full min-h-[430px] bg-[#e5e8ed] flex items-center justify-center">
+                <span className="text-2xl md:text-3xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+              </div>
             </div>
             <div className="space-y-8">
               <motion.p
@@ -607,11 +634,10 @@ function ProfessorSection() {
                 <button
                   type="button"
                   onClick={() => copyContact(item.key, item.value)}
-                  className={`justify-self-start md:justify-self-end px-2.5 py-1 text-[0.78rem] rounded transition-colors ${
-                    copiedContact === item.key
-                      ? "bg-[#123f86] text-white"
-                      : "bg-[#f1f4f9] text-[#123f86] hover:bg-[#e6ebf3]"
-                  }`}
+                  className={`justify-self-start md:justify-self-end px-2.5 py-1 text-[0.78rem] rounded transition-colors ${copiedContact === item.key
+                    ? "bg-[#123f86] text-white"
+                    : "bg-[#f1f4f9] text-[#123f86] hover:bg-[#e6ebf3]"
+                    }`}
                 >
                   {copiedContact === item.key ? "복사됨" : "복사"}
                 </button>
@@ -625,33 +651,30 @@ function ProfessorSection() {
             <button
               type="button"
               onClick={() => setActiveTab("activities")}
-                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${
-                activeTab === "activities"
-                  ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
-                  : "border-transparent text-gray-400 hover:text-gray-600"
-              }`}
+              className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${activeTab === "activities"
+                ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
+                : "border-transparent text-gray-400 hover:text-gray-600"
+                }`}
             >
               주요 활동
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("career")}
-                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${
-                activeTab === "career"
-                  ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
-                  : "border-transparent text-gray-400 hover:text-gray-600"
-              }`}
+              className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${activeTab === "career"
+                ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
+                : "border-transparent text-gray-400 hover:text-gray-600"
+                }`}
             >
               주요 경력
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("papers")}
-                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${
-                activeTab === "papers"
-                  ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
-                  : "border-transparent text-gray-400 hover:text-gray-600"
-              }`}
+              className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${activeTab === "papers"
+                ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
+                : "border-transparent text-gray-400 hover:text-gray-600"
+                }`}
             >
               주요 논문
             </button>
@@ -768,7 +791,9 @@ function PeopleTabSection() {
           transition={{ duration: 0.25 }}
           className="space-y-3"
         >
-          <div className="w-full aspect-[3/4] bg-[#e6e9ee]" />
+          <div className="w-full aspect-[3/4] bg-[#e6e9ee] flex items-center justify-center">
+            <span className="text-xl md:text-2xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+          </div>
           <div className="border-t border-[#e1e6ef] pt-2.5 text-[0.9rem] text-[#172033] leading-[1.4]">
             <span className="font-semibold tracking-[0.01em]">{member.name}</span>
             {member.note ? <span className="text-[#5a667a]"> {member.note}</span> : null}
@@ -793,7 +818,9 @@ function PeopleTabSection() {
           </motion.h3>
           <div className="border-t border-[#123f86] pt-4">
             <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 md:gap-8 items-start">
-              <div className="w-[170px] sm:w-[200px] aspect-[3/4] bg-[#e6e9ee]" />
+              <div className="w-[170px] sm:w-[200px] aspect-[3/4] bg-[#e6e9ee] flex items-center justify-center">
+                <span className="text-xl md:text-2xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+              </div>
               <div className="space-y-2.5">
                 <motion.h2
                   initial={{ opacity: 0, y: 10 }}
@@ -1045,17 +1072,16 @@ function PublicationsSection() {
         <div className="mt-3 border-b border-gray-200 overflow-x-auto scrollbar-hide">
           <div className="flex min-w-max gap-5">
             {filterTabs.map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setCategory(tab.key)}
-              className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${
-                category === tab.key
+              <button
+                key={tab.key}
+                onClick={() => setCategory(tab.key)}
+                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${category === tab.key
                   ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
                   : "border-transparent text-gray-400 hover:text-gray-600"
-              }`}
-            >
+                  }`}
+              >
                 {tab.label}
-            </button>
+              </button>
             ))}
           </div>
         </div>
@@ -1184,11 +1210,10 @@ function PatentsSection() {
               <button
                 key={tab.key}
                 onClick={() => setCategory(tab.key)}
-                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${
-                  category === tab.key
-                    ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
-                }`}
+                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${category === tab.key
+                  ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
+                  : "border-transparent text-gray-400 hover:text-gray-600"
+                  }`}
               >
                 {tab.label}
               </button>
@@ -1294,11 +1319,10 @@ function ProjectsSection() {
           <div className="flex min-w-max gap-5">
             <button
               onClick={() => setYearFilter("ALL")}
-              className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${
-                yearFilter === "ALL"
-                  ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
-                  : "border-transparent text-gray-400 hover:text-gray-600"
-              }`}
+              className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${yearFilter === "ALL"
+                ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
+                : "border-transparent text-gray-400 hover:text-gray-600"
+                }`}
             >
               ALL
             </button>
@@ -1306,11 +1330,10 @@ function ProjectsSection() {
               <button
                 key={year}
                 onClick={() => setYearFilter(year)}
-                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${
-                  yearFilter === year
-                    ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
-                    : "border-transparent text-gray-400 hover:text-gray-600"
-                }`}
+                className={`pb-2.5 text-sm transition-colors border-b-2 -mb-px ${yearFilter === year
+                  ? "border-[#1A5FB4] text-[#1A5FB4] font-semibold"
+                  : "border-transparent text-gray-400 hover:text-gray-600"
+                  }`}
               >
                 {year}
               </button>
@@ -1465,7 +1488,6 @@ function renderTab(
 // ??? Root App ?????????????????????????????????????????????????????????????????
 
 export default function App() {
-  const [bootComplete, setBootComplete] = useState(false);
   const [activeTab, setActiveTab] = useState<TabKey>("home");
   const [showJailbreak, setShowJailbreak] = useState(false);
   const isHome = activeTab === "home";
@@ -1473,60 +1495,57 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      <AnimatePresence>
-        {!bootComplete && <TerminalBoot onComplete={() => setBootComplete(true)} />}
-      </AnimatePresence>
-
-      {bootComplete && (
-        <>
-          {/* ?? Top Bar ?? */}
-          <header className="sticky top-0 z-40 bg-[#1e3a8a] rounded-b-2xl shadow-md">
-            <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center gap-4">
-              <div className="shrink-0 whitespace-nowrap font-bold text-sm md:text-base text-white tracking-tight">
-                AI Security <span className="font-normal text-white/50">LAB</span>
-              </div>
-              <nav className="overflow-x-auto scrollbar-hide ml-auto">
-                <div className="inline-flex items-center whitespace-nowrap">
-                  {TABS.map((tab) => (
-                    <button
-                      key={tab.key}
-                      onClick={() => { setActiveTab(tab.key); setShowJailbreak(false); }}
-                      className={`px-2.5 md:px-3 py-1.5 text-xs md:text-sm transition-colors ${
-                        activeTab === tab.key && !showJailbreak
-                          ? "text-white font-semibold"
-                          : "text-white/50 hover:text-white/85"
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                </div>
-              </nav>
+      {/* ?聙?聙 Top Bar ?聙?聙 */}
+      <header className="sticky top-0 z-40 bg-[#1e3a8a] rounded-b-2xl shadow-md">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center gap-4">
+          <div className="shrink-0 whitespace-nowrap font-bold text-sm md:text-base text-white tracking-tight">
+            AI Security <span className="font-normal text-white/50">LAB</span>
+          </div>
+          <nav className="overflow-x-auto scrollbar-hide ml-auto">
+            <div className="inline-flex items-center whitespace-nowrap">
+              {TABS.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => { setActiveTab(tab.key); setShowJailbreak(false); }}
+                  className={`px-2.5 md:px-3 py-1.5 text-xs md:text-sm transition-colors ${activeTab === tab.key && !showJailbreak
+                    ? "text-white font-semibold"
+                    : "text-white/50 hover:text-white/85"
+                    }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
-          </header>
+          </nav>
+        </div>
+      </header>
 
-          {/* ?? Main ?? */}
-          <main
-            className={
-              (isHome || isContact) && !showJailbreak
-                ? "h-[calc(100dvh-82px)] w-full"
-                : "max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14"
-            }
-          >
-            <AnimatePresence mode="wait">
-              {renderTab(activeTab, setActiveTab, setShowJailbreak)}
-            </AnimatePresence>
-          </main>
+      {/* ?聙?聙 Main ?聙?聙 */}
+      <main
+        className={
+          (isHome || isContact) && !showJailbreak
+            ? "h-[calc(100dvh-82px)] w-full no-text-reveal"
+            : "max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14 no-text-reveal"
+        }
+      >
+        <AnimatePresence mode="wait">
+          {renderTab(activeTab, setActiveTab, setShowJailbreak)}
+        </AnimatePresence>
+      </main>
 
-          {/* ?? Jailbreak Chat Overlay ?? */}
-          {showJailbreak && (
-            <JailbreakChatPage onBack={() => setShowJailbreak(false)} />
-          )}
-        </>
+      {/* ?聙?聙 Jailbreak Chat Overlay ?聙?聙 */}
+      {showJailbreak && (
+        <JailbreakChatPage onBack={() => setShowJailbreak(false)} />
       )}
     </div>
   );
 }
+
+
+
+
+
+
 
 
 
