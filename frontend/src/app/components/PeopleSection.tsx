@@ -151,7 +151,7 @@ export function PeopleSection() {
         <div className="overflow-hidden" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
           <div
             ref={trackRef}
-            className="flex w-max gap-6 will-change-transform"
+            className="keep-motion flex w-max gap-6 will-change-transform"
             onWheelCapture={(e) => {
               scrollingUntilRef.current = performance.now() + 280;
               velocityRef.current = Math.max(

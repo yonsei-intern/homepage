@@ -202,21 +202,21 @@
 
 @layer base {
   /* Disable text reveal/slide animations in main and tab content */
-  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="opacity"] {
+  .no-text-reveal :not(.keep-motion):not(.keep-motion *):is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button, div, article, section)[style*="opacity"] {
     opacity: 1 !important;
   }
 
-  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="transform"] {
+  .no-text-reveal :not(.keep-motion):not(.keep-motion *):is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button, div, article, section)[style*="transform"] {
     transform: none !important;
   }
 
-  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="filter"] {
+  .no-text-reveal :not(.keep-motion):not(.keep-motion *):is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button, div, article, section)[style*="filter"] {
     filter: none !important;
   }
 
-  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="opacity"],
-  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="transform"],
-  .no-text-reveal :is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button)[style*="filter"] {
+  .no-text-reveal :not(.keep-motion):not(.keep-motion *):is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button, div, article, section)[style*="opacity"],
+  .no-text-reveal :not(.keep-motion):not(.keep-motion *):is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button, div, article, section)[style*="transform"],
+  .no-text-reveal :not(.keep-motion):not(.keep-motion *):is(h1, h2, h3, h4, h5, h6, p, span, small, strong, em, li, label, a, button, div, article, section)[style*="filter"] {
     transition: none !important;
     animation: none !important;
   }
