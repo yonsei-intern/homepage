@@ -154,65 +154,97 @@ function HomeSection({
   ] as const;
 
   const publicationItems = [
-    'Jeewoo Jung, Taekyoung Kwon, "Enhancing Differential Fuzzing of Crypto Libraries", ICISC, 2024.',
-    'Leo Hyun Park, Jaeuk Kim, Myung Gyo Oh, Jaewoo Park, and Taekyoung Kwon, "Generating Adversarial Training", ACM Workshop on Artificial Intelligence Security, 2024.',
-    'Jueon Eom, Seyeon Jeong, and Taekyoung Kwon, "Fuzzing JavaScript Interpreters", ISSTA, 2024.',
-    'Mingi Cho, Dohyeon An, Hoyong Jin, and Taekyoung Kwon, "BoKASAN", USENIX Security, 2023.',
-    'Leo Hyun Park, Soochang Chung, Jaeuk Kim, and Taekyoung Kwon, "Grad Neurocomputing", Elsevier, 2023.',
+    {
+      title: "Enhancing Differential Fuzzing of Cryptographic Libraries",
+      meta: "Jeewoo Jung, Taekyoung Kwon · ICISC · 2024",
+    },
+    {
+      title: "Generating Adversarial Training Data for Model Robustness",
+      meta: "Leo Hyun Park, Jaeuk Kim, Myung Gyo Oh, Jaewoo Park, Taekyoung Kwon · AISec Workshop · 2024",
+    },
+    {
+      title: "Fuzzing JavaScript Interpreters in Practical Environments",
+      meta: "Jueon Eom, Seyeon Jeong, Taekyoung Kwon · ISSTA · 2024",
+    },
+    {
+      title: "BoKASAN: Binary-only Kernel Address Sanitizer",
+      meta: "Mingi Cho, Dohyeon An, Hoyong Jin, Taekyoung Kwon · USENIX Security · 2023",
+    },
+    {
+      title: "Grad Neurocomputing for Secure Learning Systems",
+      meta: "Leo Hyun Park, Soochang Chung, Jaeuk Kim, Taekyoung Kwon · Elsevier Neurocomputing · 2023",
+    },
   ] as const;
 
   const patentItems = [
-    'Jeewoo Jung, Taekyoung Kwon, "Enhancing Differential Fuzzing of Crypto Libraries", ICISC, 2024.',
-    'Leo Hyun Park, Jaeuk Kim, Myung Gyo Oh, Jaewoo Park, and Taekyoung Kwon, "Generating Adversarial Training", ACM Workshop on Artificial Intelligence Security, 2024.',
-    'Jueon Eom, Seyeon Jeong, and Taekyoung Kwon, "Fuzzing JavaScript Interpreters", ISSTA, 2024.',
-    'Mingi Cho, Dohyeon An, Hoyong Jin, and Taekyoung Kwon, "BoKASAN", USENIX Security, 2023.',
-    'Leo Hyun Park, Soochang Chung, Jaeuk Kim, and Taekyoung Kwon, "Grad Neurocomputing", Elsevier, 2023.',
+    {
+      title: "Method for Differential Fuzzing of Cryptographic Modules",
+      meta: "KR Patent · 2025 · Inventors: Jeewoo Jung, Taekyoung Kwon",
+    },
+    {
+      title: "Prompt Injection Detection and Risk Scoring Pipeline",
+      meta: "KR Patent · 2025 · Inventors: Leo Hyun Park, Jaeuk Kim, Taekyoung Kwon",
+    },
+    {
+      title: "Deepfake Trace Pattern-based Integrity Verification",
+      meta: "KR Patent · 2024 · Inventors: Jueon Eom, Seyeon Jeong, Taekyoung Kwon",
+    },
+    {
+      title: "Kernel-level Memory Corruption Detection Technique",
+      meta: "KR Patent · 2024 · Inventors: Mingi Cho, Dohyeon An, Taekyoung Kwon",
+    },
+    {
+      title: "Secure Training Workflow for Generative Models",
+      meta: "KR Patent · 2023 · Inventors: Leo Hyun Park, Soochang Chung, Taekyoung Kwon",
+    },
   ] as const;
 
   return (
-    <div className="w-full overflow-x-hidden bg-[#f4f4f4] text-[#0f2448]">
-      <section className="bg-[#f4f4f4]">
-        <div className="mx-auto max-w-7xl px-6 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-stretch">
-          <div className="flex flex-col justify-center max-w-2xl">
-            <p className="text-xl font-semibold text-[#2f58ff]">YONSEI UNIVERSITY</p>
-            <h1 className="mt-5 text-5xl md:text-7xl font-extrabold tracking-tight text-[#111a34]">
-              AI Security LAB
-            </h1>
-            <h2 className="mt-8 text-3xl md:text-5xl font-bold leading-snug text-[#2d3f61]">
-              연세대학교 정보대학원
-              <br />
-              정보보호&AI보안연구실
-            </h2>
-            <p className="mt-8 text-lg md:text-2xl leading-relaxed text-[#6b7b95]">
-              권태경 교수님 지도하에 저희 정보보호/AI보안 연구실은 인공지능 기술의 급속한 발전이 가져온 새로운 보안 과제에 대응하기 위해
-              AI 기반 보안 위협 분석 및 대응 기술을 중심으로 다양한 주제를 연구하고 있습니다.
-            </p>
+    <div className="w-full overflow-x-hidden bg-[#f2f3f5] text-[#0f2448]">
+      <section className="bg-[#f2f3f5]">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 items-stretch">
+          <div className="min-h-[260px] md:min-h-[520px] bg-[#cfcfd1] flex items-center justify-center">
+            <span className="text-[32px] md:text-[36px] lg:text-[40px] font-semibold tracking-[0.14em] text-[#acb4c0]">TBD</span>
           </div>
-          <div className="min-h-[280px] md:min-h-[560px] bg-[#d0d0d0] flex items-center justify-center">
-            <span className="text-4xl md:text-6xl font-semibold tracking-[0.14em] text-[#a3abb6]">TBD</span>
+          <div className="flex items-center">
+            <div className="w-full max-w-[680px] px-6 md:px-8 xl:px-10 py-12 md:py-16">
+              <p className="text-[13px] md:text-[13px] lg:text-[14px] font-semibold tracking-[0.01em] text-[#5b84da]">YONSEI UNIVERSITY</p>
+              <h1 className="mt-4 md:mt-5 text-[36px] md:text-[40px] lg:text-[44px] font-extrabold tracking-[-0.02em] text-[#111a34] leading-[1.05]">
+                AI Security LAB
+              </h1>
+              <h2 className="mt-6 text-[20px] md:text-[22px] lg:text-[24px] font-bold leading-[1.3] text-[#304766]">
+                연세대학교 정보대학원
+                <br />
+                정보보호&AI보안연구실
+              </h2>
+              <p className="mt-6 text-[14px] md:text-[15px] lg:text-[16px] leading-[1.75] text-[#596c89]">
+                권태경 교수님 지도하에 저희 정보보호/AI보안 연구실은 인공지능 기술의 급속한 발전이 가져온 새로운 보안 과제에 대응하기 위해
+                AI 기반 보안 위협 분석 및 대응 기술을 중심으로 다양한 주제를 연구하고 있습니다.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pt-8 pb-14 md:pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+      <section className="mx-auto w-full max-w-[1360px] px-6 md:px-8 xl:px-10 pt-14 md:pt-20 pb-16 md:pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-9 md:gap-10">
           {researchCards.map((card) => (
-            <article key={card.number} className="space-y-4">
-              <div className="text-[92px] leading-none font-extrabold text-[#e4e7eb]">{card.number}</div>
-              <div className="text-xs tracking-[0.2em] text-[#6e8bcf] uppercase">{card.category}</div>
-              <h3 className="text-[46px] leading-[1.05] font-black text-[#0f172a]">{card.title}</h3>
-              <div className="space-y-2">
+            <article key={card.number} className="h-full flex flex-col gap-4">
+              <div className="text-[52px] md:text-[56px] leading-none font-extrabold text-[#e5e8ed]">{card.number}</div>
+              <div className="text-[11px] tracking-[0.19em] font-semibold text-[#5b84da] uppercase">{card.category}</div>
+              <h3 className="text-[30px] md:text-[32px] lg:text-[36px] leading-[1.1] font-black text-[#0d1220]">{card.title}</h3>
+              <div className="space-y-1.5 md:space-y-2">
                 {card.lines.map((line) => (
-                  <p key={line} className="text-base md:text-lg leading-relaxed text-[#5b6c87]">
+                  <p key={line} className="text-[13px] md:text-[13px] lg:text-[14px] leading-[1.72] text-[#586a86]">
                     {line}
                   </p>
                 ))}
               </div>
-              <div className="flex items-center gap-2.5 pt-1">
+              <div className="mt-auto flex items-center gap-2.5 pt-4 flex-wrap">
                 <button
                   type="button"
                   onClick={() => onNavigate("publications")}
-                  className="border border-[#cfd7e6] bg-[#f4f4f4] px-3 py-1.5 text-sm font-medium text-[#3d64b1]"
+                  className="border border-[#ccd6e7] bg-[#f2f3f5] px-3.5 py-1.5 text-[13px] md:text-[13px] font-medium text-[#3a63b1]"
                 >
                   더 알아보기 →
                 </button>
@@ -220,7 +252,7 @@ function HomeSection({
                   <button
                     type="button"
                     onClick={onTry}
-                    className="border border-[#2d5cb6] bg-[#2d5cb6] px-3 py-1.5 text-sm font-semibold text-white"
+                    className="border border-[#2d5cb6] bg-[#2d5cb6] px-3.5 py-1.5 text-[13px] md:text-[13px] font-semibold text-white"
                   >
                     체험해보기 →
                   </button>
@@ -231,43 +263,76 @@ function HomeSection({
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-10">
-        <div className="mb-7">
-          <div className="text-xs tracking-[0.2em] text-[#9aaecd] uppercase">People</div>
-          <h2 className="mt-2 text-[52px] font-extrabold text-[#0f172a]">연구실 구성원</h2>
+      <section className="mx-auto w-full max-w-[1360px] px-6 md:px-8 xl:px-10 py-14 md:py-20">
+        <div className="mb-6 md:mb-7">
+          <div className="text-[11px] tracking-[0.2em] font-semibold text-[#5b84da] uppercase">People</div>
+          <div className="mt-2 flex items-center justify-between gap-3">
+            <h2 className="text-[30px] md:text-[31px] lg:text-[34px] font-extrabold text-[#0f172a]">연구실 구성원</h2>
+            <button
+              type="button"
+              onClick={() => onNavigate("people")}
+              className="text-[13px] font-semibold text-[#2b4f93] hover:text-[#1e3f78]"
+            >
+              더보기 →
+            </button>
+          </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {people.map((name) => (
-            <article key={name} className="space-y-3">
-              <div className="h-[320px] bg-[#d7dbe1] flex items-center justify-center">
-                <span className="text-5xl font-semibold tracking-[0.14em] text-[#acb4c0]">TBD</span>
+            <article key={name} className="space-y-2.5">
+              <div className="h-[220px] md:h-[225px] lg:h-[250px] bg-[#d7dbe1] flex items-center justify-center">
+                <span className="text-[30px] md:text-[30px] lg:text-[34px] font-semibold tracking-[0.14em] text-[#acb4c0]">TBD</span>
               </div>
-              <h3 className="border-t border-[#cfd4dd] pt-3 text-[30px] font-bold text-[#293a58]">{name}</h3>
+              <h3 className="border-t border-[#cfd4dd] pt-2.5 text-[14px] md:text-[14px] lg:text-[15px] font-bold text-[#17284a]">{name}</h3>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
+      <section className="mx-auto w-full max-w-[1360px] px-6 md:px-8 xl:px-10 py-20 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
           <article>
-            <h2 className="text-[48px] font-bold text-[#1c2d4e]">Publication</h2>
-            <ol className="mt-5 space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-[31px] md:text-[32px] font-bold text-[#121b2c]">Publication</h2>
+              <button
+                type="button"
+                onClick={() => onNavigate("publications")}
+                className="text-[13px] font-semibold text-[#2b4f93] hover:text-[#1e3f78]"
+              >
+                더보기 →
+              </button>
+            </div>
+            <ol className="mt-5 md:mt-6 bg-white/95 rounded-md overflow-hidden">
               {publicationItems.map((item, index) => (
-                <li key={item} className="grid grid-cols-[28px_1fr] gap-3 text-[#526685]">
+                <li key={item.title} className="grid grid-cols-[34px_1fr] md:grid-cols-[42px_1fr] gap-3 px-3 py-3 border-b border-[#e3e9f3] last:border-b-0">
                   <span className="font-semibold text-[#2a4f95]">{index + 1}.</span>
-                  <span className="text-base leading-relaxed">{item}</span>
+                  <div className="min-w-0">
+                    <p className="text-[14px] leading-[1.5] font-semibold text-[#1a2a45]">{item.title}</p>
+                    <p className="mt-0.5 text-[12px] leading-[1.5] text-[#5b6f8f]">{item.meta}</p>
+                  </div>
                 </li>
               ))}
             </ol>
           </article>
           <article>
-            <h2 className="text-[48px] font-bold text-[#1c2d4e]">Patents</h2>
-            <ol className="mt-5 space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-[31px] md:text-[32px] font-bold text-[#121b2c]">Patents</h2>
+              <button
+                type="button"
+                onClick={() => onNavigate("patents")}
+                className="text-[13px] font-semibold text-[#2b4f93] hover:text-[#1e3f78]"
+              >
+                더보기 →
+              </button>
+            </div>
+            <ol className="mt-5 md:mt-6 bg-white/95 rounded-md overflow-hidden">
               {patentItems.map((item, index) => (
-                <li key={item} className="grid grid-cols-[28px_1fr] gap-3 text-[#526685]">
+                <li key={item.title} className="grid grid-cols-[34px_1fr] md:grid-cols-[42px_1fr] gap-3 px-3 py-3 border-b border-[#e3e9f3] last:border-b-0">
                   <span className="font-semibold text-[#2a4f95]">{index + 1}.</span>
-                  <span className="text-base leading-relaxed">{item}</span>
+                  <div className="min-w-0">
+                    <p className="text-[14px] leading-[1.5] font-semibold text-[#1a2a45]">{item.title}</p>
+                    <p className="mt-0.5 text-[12px] leading-[1.5] text-[#5b6f8f]">{item.meta}</p>
+                  </div>
                 </li>
               ))}
             </ol>
@@ -275,29 +340,29 @@ function HomeSection({
         </div>
       </section>
 
-      <section className="bg-[#05080f] px-6 py-16 md:py-20">
-        <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-10">
-            <h2 className="text-[52px] font-bold text-white">
+      <section className="bg-[#04070f] px-6 md:px-8 xl:px-10 py-20 md:py-24">
+        <div className="mx-auto w-full max-w-[1120px]">
+          <div className="text-center mb-9 md:mb-10">
+            <h2 className="text-[32px] md:text-[34px] font-bold text-white">
               찾아오시는 <span className="text-[#2f58ff]">길</span>
             </h2>
-            <p className="text-[#a1adbf] text-sm mt-1">Location</p>
+            <p className="text-[#5b84da] text-[13px] md:text-[13px] font-semibold mt-1.5">Location</p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-8 text-white">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-8 md:gap-10 items-start">
+            <div className="space-y-7 md:space-y-8 text-white max-w-[420px] justify-self-center lg:justify-self-start">
               <div>
-                <h3 className="text-3xl font-bold">교수님 연구실</h3>
-                <p className="mt-1 text-[#b6c0d0] text-xl">연세대학교 새천년관 407호</p>
-                <p className="mt-1 text-[#4f83ff] text-xl">02-2123-4523</p>
+                <h3 className="text-[20px] md:text-[22px] font-bold">교수님 연구실</h3>
+                <p className="mt-1 text-[#b6c0d0] text-[16px] md:text-[16px]">연세대학교 새천년관 407호</p>
+                <p className="mt-1 text-[#4f83ff] text-[16px] md:text-[16px]">02-2123-4523</p>
               </div>
               <div>
-                <h3 className="text-3xl font-bold">연구실</h3>
-                <p className="mt-1 text-[#b6c0d0] text-xl">연세대학교 새천년관 109호, 110호</p>
-                <p className="mt-1 text-[#4f83ff] text-xl">02-2123-4197</p>
+                <h3 className="text-[20px] md:text-[22px] font-bold">연구실</h3>
+                <p className="mt-1 text-[#b6c0d0] text-[16px] md:text-[16px]">연세대학교 새천년관 109호, 110호</p>
+                <p className="mt-1 text-[#4f83ff] text-[16px] md:text-[16px]">02-2123-4197</p>
               </div>
-              <p className="text-[#b6c0d0] text-xl">서울특별시 서대문구 연세로 50</p>
+              <p className="text-[#b6c0d0] text-[16px] md:text-[16px]">서울특별시 서대문구 연세로 50</p>
             </div>
-            <div className="h-[360px] overflow-hidden border border-[#2b3342] shadow-[0_20px_55px_rgba(0,0,0,0.45)]">
+            <div className="w-full max-w-[620px] h-[280px] md:h-[360px] justify-self-center lg:justify-self-end overflow-hidden border border-[#2b3342] shadow-[0_20px_55px_rgba(0,0,0,0.45)]">
               <iframe
                 src="https://maps.google.com/maps?q=Yonsei%20University%20Seoul&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
@@ -1586,7 +1651,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* ?聙?聙 Top Bar ?聙?聙 */}
-      <header className="sticky top-0 z-40 bg-[#1e3a8a] rounded-b-2xl shadow-md">
+      <header className="fixed inset-x-0 -top-px z-50 bg-[#1e3a8a] rounded-b-2xl shadow-md">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center gap-4">
           <div className="shrink-0 whitespace-nowrap font-bold text-sm md:text-base text-white tracking-tight">
             AI Security <span className="font-normal text-white/50">LAB</span>
@@ -1614,10 +1679,10 @@ export default function App() {
       <main
         className={
           !showJailbreak && isContact
-            ? "h-[calc(100dvh-82px)] w-full no-text-reveal"
+            ? "w-full pt-[72px] md:pt-[78px] no-text-reveal"
             : !showJailbreak && isHome
-              ? "w-full no-text-reveal"
-              : "max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14 no-text-reveal"
+              ? "w-full pt-[72px] md:pt-[78px] no-text-reveal"
+              : "max-w-7xl mx-auto px-4 md:px-6 pt-[82px] md:pt-[92px] pb-10 md:pb-14 no-text-reveal"
         }
       >
         <AnimatePresence mode="wait">
