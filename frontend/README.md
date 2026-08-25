@@ -1,7 +1,3 @@
-# C¾È
-
-This project is exported from Figma Make.
-
 ## Local Run
 
 ```bash

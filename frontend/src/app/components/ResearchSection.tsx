@@ -6,7 +6,6 @@ interface ResearchSectionProps {
   category: string;
   title: string;
   description: string[];
-  tags: string[];
   papers: { title: string; venue: string }[];
   showTryButton?: boolean;
   onLearnMore?: () => void;
@@ -18,7 +17,6 @@ export function ResearchSection({
   category,
   title,
   description,
-  tags,
   papers,
   showTryButton = false,
   onLearnMore,
@@ -80,20 +78,6 @@ export function ResearchSection({
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag, index) => (
-              <motion.span
-                key={tag}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.7 + index * 0.06 }}
-                className="px-3 py-1.5 rounded-full text-sm text-[#1A5FB4] bg-[#1A5FB4]/7"
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -103,7 +87,7 @@ export function ResearchSection({
             <button
               type="button"
               onClick={onLearnMore}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-[#1A5FB4] border border-[#1A5FB4]/30 hover:border-[#1A5FB4] hover:bg-[#1A5FB4]/5 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-[#1A5FB4] bg-[#1A5FB4]/8 hover:bg-[#1A5FB4]/15 transition-colors"
             >
               더 알아보기
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -114,7 +98,7 @@ export function ResearchSection({
               <button
                 type="button"
                 onClick={onTry}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-[#1A5FB4] hover:bg-[#174f98] transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1A5FB4] hover:bg-[#174f98] transition-colors"
               >
                 체험해보기
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
