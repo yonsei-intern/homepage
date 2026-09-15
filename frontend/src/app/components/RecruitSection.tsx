@@ -19,6 +19,12 @@ const RESEARCH_TRACKS = [
       "데이터셋 구축 및 연구",
     ],
   },
+  {
+    title: "취약점탐지",
+    lines: [
+      "정적, 동적분석을 통한 취약점 발굴,"
+    ],
+  },
 ];
 
 const RECRUIT_TARGETS = [

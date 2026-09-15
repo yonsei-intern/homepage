@@ -7,9 +7,7 @@ interface ResearchSectionProps {
   title: string;
   description: string[];
   papers: { title: string; venue: string }[];
-  showTryButton?: boolean;
   onLearnMore?: () => void;
-  onTry?: () => void;
 }
 
 export function ResearchSection({
@@ -18,9 +16,7 @@ export function ResearchSection({
   title,
   description,
   papers,
-  showTryButton = false,
   onLearnMore,
-  onTry,
 }: ResearchSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -84,23 +80,13 @@ export function ResearchSection({
             transition={{ duration: 0.35, delay: 0.95 }}
             className="flex flex-wrap items-center gap-3 pt-1"
           >
-            <button
-              type="button"
-              onClick={onLearnMore}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-[#1A5FB4] bg-[#1A5FB4]/8 hover:bg-[#1A5FB4]/15 transition-colors"
-            >
-              더 알아보기
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <path d="M2 6.5h9M6.5 2l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            {showTryButton && (
+            {onLearnMore && (
               <button
                 type="button"
-                onClick={onTry}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1A5FB4] hover:bg-[#174f98] transition-colors"
+                onClick={onLearnMore}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-[#1A5FB4] bg-[#1A5FB4]/8 hover:bg-[#1A5FB4]/15 transition-colors"
               >
-                체험해보기
+                더 알아보기
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                   <path d="M2 6.5h9M6.5 2l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

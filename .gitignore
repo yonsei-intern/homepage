@@ -3,3 +3,11 @@ frontend/dist/
 frontend/build-output.log
 frontend/build-output.txt
 
+# Local development/session files
+.omx/
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+*~
