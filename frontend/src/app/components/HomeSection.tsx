@@ -4,14 +4,18 @@ import { ResearchSection } from "./ResearchSection";
 import { PeopleSection } from "./PeopleSection";
 import { ResearchOutputSection } from "./ResearchOutputSection";
 import { ContactSection } from "./ContactSection";
+import { useSiteImages } from "../hooks/useSiteImages";
+import { useHomeResearchPapers } from "../hooks/useHomeResearchPapers";
 
 export function HomeSection({
   onNavigate,
-  onTry,
 }: {
   onNavigate: (tab: TabKey) => void;
-  onTry: () => void;
 }) {
+  const siteImages = useSiteImages();
+  const heroImage = siteImages.home_hero;
+  const researchPapers = useHomeResearchPapers();
+
   return (
     <motion.div
       key="home-content"
@@ -37,8 +41,12 @@ export function HomeSection({
               AI 기반 보안 위협 분석 및 대응 기술을 중심으로 다양한 주제를 연구하고 있습니다.
             </p>
           </div>
-          <div className="h-[48vh] min-h-[300px] md:h-[62vh] md:min-h-[380px] max-h-[540px] rounded-3xl bg-gray-200 md:translate-x-3 flex items-center justify-center">
-            <span className="text-3xl md:text-5xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+          <div className="h-[48vh] min-h-[300px] md:h-[62vh] md:min-h-[380px] max-h-[540px] overflow-hidden rounded-3xl bg-gray-200 md:translate-x-3 flex items-center justify-center">
+            {heroImage ? (
+              <img src={heroImage} alt="AI Security Lab" className="h-full w-full object-cover" />
+            ) : (
+              <span className="text-3xl md:text-5xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+            )}
           </div>
         </div>
 
@@ -55,19 +63,13 @@ export function HomeSection({
       <ResearchSection
         number="01"
         category="AI SECURITY"
-        showTryButton
         title="AI 보안"
         description={[
           "생성형 AI 기반 시스템의 정보 유출, 프롬프트 주입, 모델 오염 등 AI 고유 취약점을 분석합니다.",
           "실전 공격 시나리오 기반으로 방어 기법을 설계하고 검증합니다.",
         ]}
-        papers={[
-          { title: "Red-Teaming LLMs with Token Control Score", venue: "RAID 2025" },
-          { title: "Amplifying Training Data Exposure through Fine-Tuning", venue: "IEEE TIFS 2025" },
-          { title: "LeakGuard: Detecting Attribute Leakage in Diffusion Models", venue: "WISA 2025" },
-        ]}
+        papers={researchPapers.ai_security}
         onLearnMore={() => onNavigate("publications")}
-        onTry={onTry}
       />
 
       <ResearchSection
@@ -78,11 +80,7 @@ export function HomeSection({
           "in-the-wild 딥페이크 콘텐츠를 기반으로 범용 성능을 갖춘 탐지 모델을 연구합니다.",
           "압축, 노이즈, 다양한 환경 변화에서도 안정적으로 동작하도록 고도화합니다.",
         ]}
-        papers={[
-          { title: "Multi-View Slot Attention Using Paraphrased Texts", venue: "ICCV 2025" },
-          { title: "On the Correlation Between Detection and Image Quality", venue: "WDC 2024" },
-          { title: "Coexistence of Deepfake Defenses", venue: "IEEE Access 2024" },
-        ]}
+        papers={researchPapers.deepfake_detection}
         onLearnMore={() => onNavigate("publications")}
       />
 
@@ -94,11 +92,7 @@ export function HomeSection({
           "퍼징, 심볼릭 실행, 정적/동적 분석 기법에 AI를 접목해 취약점 탐지를 자동화합니다.",
           "코드, 테스트 로그, 트레이스 분석을 통해 보안 탐지 정확성을 높입니다.",
         ]}
-        papers={[
-          { title: "Fuzzing JavaScript Interpreters with Coverage-Guided RL", venue: "ISSTA 2024" },
-          { title: "BoKASAN: Binary-only Kernel Address Sanitizer", venue: "USENIX Sec 2023" },
-          { title: "Enhancing Differential Fuzzing with Hybrid Fuzzing", venue: "ICISC 2024 (Best Paper)" },
-        ]}
+        papers={researchPapers.vulnerability_detection}
         onLearnMore={() => onNavigate("publications")}
       />
 

@@ -1,140 +1,63 @@
-﻿import { motion, useInView } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 interface Member {
+  id: string;
+  course: "phd" | "master" | "intern";
   name: string;
-  role: string;
+  note: string | null;
+  photoUrl: string | null;
 }
 
-const MEMBERS: Member[] = Array.from({ length: 10 }, (_, i) => ({
-  name: `name${i + 1}`,
-  role: "Researcher",
-}));
+function imageExists(photoUrl: string | null) {
+  if (!photoUrl) return Promise.resolve(false);
+
+  return new Promise<boolean>((resolve) => {
+    const image = new Image();
+    image.onload = () => resolve(true);
+    image.onerror = () => resolve(false);
+    image.src = photoUrl;
+  });
+}
 
 export function PeopleSection() {
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const groupRef = useRef<HTMLDivElement | null>(null);
-
-  const groupWidthRef = useRef(0);
-  const xRef = useRef(0);
-  const sectionRef = useRef<HTMLElement | null>(null);
-
-  const baseVelocityRef = useRef(-16); // idle: move left slowly
-  const velocityRef = useRef(-16);
-  const scrollingUntilRef = useRef(0);
-
-  const [isPaused, setIsPaused] = useState(false);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const measure = () => {
-      if (groupRef.current) groupWidthRef.current = groupRef.current.offsetWidth;
-    };
+    const controller = new AbortController();
 
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (groupRef.current) ro.observe(groupRef.current);
-    window.addEventListener("resize", measure);
+    const loadMembers = async () => {
+      try {
+        const response = await fetch("/api/students", { signal: controller.signal });
+        if (!response.ok) throw new Error("구성원 목록을 불러오지 못했습니다.");
+        const students: Member[] = await response.json();
+        const checkedStudents = await Promise.all(
+          students.map(async (student) => ((await imageExists(student.photoUrl)) ? student : null)),
+        );
 
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
-
-  useEffect(() => {
-    const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
-    const markScrolling = () => {
-      scrollingUntilRef.current = performance.now() + 280;
-    };
-    const pushVelocity = (delta: number) => {
-      velocityRef.current = clamp(velocityRef.current - delta, -1200, 1200);
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      // wheel down(+) => move left faster(-), wheel up(-) => move right(+)
-      markScrolling();
-      pushVelocity(e.deltaY * 1.35);
-    };
-    const getScrollTop = (el: Element | Window) =>
-      el instanceof Window ? el.scrollY : (el as HTMLElement).scrollTop;
-    const getScrollableParent = (el: HTMLElement | null): Element | Window => {
-      if (!el) return window;
-      let cur: HTMLElement | null = el.parentElement;
-      while (cur) {
-        const style = getComputedStyle(cur);
-        const y = style.overflowY;
-        if ((y === "auto" || y === "scroll") && cur.scrollHeight > cur.clientHeight) {
-          return cur;
+        if (!controller.signal.aborted) {
+          setMembers(checkedStudents.filter((student): student is Member => student !== null));
         }
-        cur = cur.parentElement;
+      } catch (loadError) {
+        if (loadError instanceof DOMException && loadError.name === "AbortError") return;
+        setError("구성원 목록을 불러오지 못했습니다.");
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
       }
-      return window;
     };
 
-    const scrollTarget = getScrollableParent(sectionRef.current);
-    let lastY = getScrollTop(scrollTarget);
-    const onScroll = () => {
-      const nowY = getScrollTop(scrollTarget);
-      const dy = nowY - lastY;
-      lastY = nowY;
-      markScrolling();
-      // scroll down(+) => left, scroll up(-) => right
-      pushVelocity(dy * 22);
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: true });
-    scrollTarget.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-      scrollTarget.removeEventListener("scroll", onScroll);
-    };
+    loadMembers();
+    return () => controller.abort();
   }, []);
-
-  useEffect(() => {
-    let raf = 0;
-    let last = performance.now();
-
-    const tick = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      const isScrollingNow = now < scrollingUntilRef.current;
-      const shouldPause = isPaused && !isScrollingNow;
-
-      if (!shouldPause) {
-        xRef.current += velocityRef.current * dt;
-
-        const width = groupWidthRef.current;
-        if (width > 0) {
-          if (-xRef.current >= width) xRef.current += width;
-          if (xRef.current > 0) xRef.current -= width;
-        }
-
-        // decay toward idle velocity
-        velocityRef.current += (baseVelocityRef.current - velocityRef.current) * 0.05;
-
-        if (trackRef.current) {
-          trackRef.current.style.transform = `translate3d(${xRef.current}px, 0, 0)`;
-        }
-      }
-
-      raf = requestAnimationFrame(tick);
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [isPaused]);
 
   return (
     <section
       id="people"
-      ref={(node) => {
-        ref.current = node;
-        sectionRef.current = node;
-      }}
+      ref={ref}
       className="relative min-h-screen flex items-center bg-white px-6 py-24 pb-24 overflow-x-hidden"
     >
       <div className="relative z-10 max-w-[1600px] mx-auto w-full space-y-10">
@@ -148,49 +71,56 @@ export function PeopleSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#0a0a0a]">연구실 구성원</h2>
         </motion.div>
 
-        <div className="overflow-hidden" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-          <div
-            ref={trackRef}
-            className="keep-motion flex w-max gap-6 will-change-transform"
-            onWheelCapture={(e) => {
-              scrollingUntilRef.current = performance.now() + 280;
-              velocityRef.current = Math.max(
-                -1200,
-                Math.min(1200, velocityRef.current - e.deltaY * 1.35),
-              );
-            }}
-          >
-            <div ref={groupRef} className="flex gap-6">
-              {MEMBERS.map((member) => (
-                <ProfileCard key={`a-${member.name}`} member={member} />
-              ))}
-            </div>
-            <div className="flex gap-6" aria-hidden="true">
-              {MEMBERS.map((member) => (
-                <ProfileCard key={`b-${member.name}`} member={member} />
-              ))}
-            </div>
+        {loading ? <p className="text-[#5a667a]">Loading...</p> : null}
+        {error ? <p className="text-red-600">{error}</p> : null}
+        {!loading && !error && members.length === 0 ? (
+          <p className="text-[#5a667a]">등록된 구성원이 없습니다.</p>
+        ) : null}
+
+        {!loading && !error && members.length > 0 ? (
+          <div className="flex gap-5 overflow-x-auto pb-4">
+            {members.map((member) => (
+              <ProfileCard key={member.id} member={member} />
+            ))}
           </div>
-        </div>
+        ) : null}
       </div>
     </section>
   );
 }
 
 function ProfileCard({ member }: { member: Member }) {
-  return (
-    <article className="w-[300px] md:w-[340px] h-[520px] p-0">
-      <div className="h-full w-full flex flex-col">
-        <div className="flex-1 bg-[#e6e9ee] flex items-center justify-center">
-          <span className="text-xl md:text-2xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
-        </div>
+  const [imageFailed, setImageFailed] = useState(false);
 
-        <div className="mt-3 bg-[#eef2f7] px-3 py-3 text-center">
-          <div className="text-lg font-semibold uppercase tracking-wide text-[#1f2937]">{member.name}</div>
-          <div className="text-xs text-[#6b7280] mt-0.5">{member.role}</div>
+  useEffect(() => setImageFailed(false), [member.photoUrl]);
+
+  const role =
+    member.course === "phd"
+      ? "Ph.D. Student"
+      : member.course === "master"
+        ? "Master Student"
+        : "Intern";
+
+  if (!member.photoUrl || imageFailed) return null;
+
+  return (
+    <article className="w-[170px] sm:w-[190px] lg:w-[200px] shrink-0 space-y-3">
+      <div className="w-full">
+        <img
+          src={member.photoUrl}
+          alt={`${member.name} profile`}
+          loading="lazy"
+          onError={() => setImageFailed(true)}
+          className="w-full aspect-[3/4] rounded-xl object-cover bg-[#e6e9ee]"
+        />
+
+        <div className="pt-3 text-[0.9rem] text-[#172033] leading-[1.4]">
+          <div className="font-semibold tracking-[0.01em]">{member.name}</div>
+          <div className="mt-0.5 text-xs text-[#6b7280]">
+            {role}{member.note ? ` ${member.note}` : ""}
+          </div>
         </div>
       </div>
     </article>
   );
 }
-

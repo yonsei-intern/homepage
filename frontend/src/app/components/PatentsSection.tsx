@@ -1,26 +1,75 @@
 import { Search, X } from "lucide-react";
-import { useMemo, useState } from "react";
-import {
-  buildPatentData,
-  PATENT_CATEGORY_ORDER,
-  PATENT_RAW,
-  patentCategoryLabel,
-  type PatentCategory,
-} from "../patentsData";
+import { useEffect, useMemo, useState } from "react";
 import { TabPage } from "./TabPrimitives";
+
+type PatentCategory =
+  | "international_registered"
+  | "international_filed"
+  | "domestic_registered"
+  | "domestic_filed"
+  | "software_output";
+
+type PatentItem = {
+  id: string;
+  code: string;
+  title: string;
+  category: PatentCategory;
+};
+
+const PATENT_CATEGORY_ORDER: PatentCategory[] = [
+  "international_registered",
+  "international_filed",
+  "domestic_registered",
+  "domestic_filed",
+  "software_output",
+];
+
+const CATEGORY_LABEL: Record<PatentCategory, string> = {
+  international_registered: "국제 특허 등록",
+  international_filed: "국제 특허 출원",
+  domestic_registered: "국내 특허 등록",
+  domestic_filed: "국내 특허 출원",
+  software_output: "SW 연구성과물",
+};
+
+function patentCategoryLabel(category: PatentCategory) {
+  return CATEGORY_LABEL[category];
+}
 
 export function PatentsSection() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<PatentCategory | "ALL">("ALL");
+  const [allItems, setAllItems] = useState<PatentItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const allItems = useMemo(() => buildPatentData(PATENT_RAW), []);
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadPatents = async () => {
+      try {
+        const response = await fetch("/api/patents", { signal: controller.signal });
+        if (!response.ok) throw new Error("특허 목록을 불러오지 못했습니다.");
+        setAllItems(await response.json());
+      } catch (loadError) {
+        if (loadError instanceof DOMException && loadError.name === "AbortError") return;
+        setError("특허 목록을 불러오지 못했습니다.");
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    loadPatents();
+    return () => controller.abort();
+  }, []);
+
   const filterTabs: Array<{ key: PatentCategory | "ALL"; label: string }> = [
     { key: "ALL", label: "ALL" },
-    { key: "INTERNATIONAL_REGISTERED", label: "국제 특허 등록" },
-    { key: "INTERNATIONAL_FILED", label: "국제 특허 출원" },
-    { key: "DOMESTIC_REGISTERED", label: "국내 특허 등록" },
-    { key: "DOMESTIC_FILED", label: "국내 특허 출원" },
-    { key: "SW_OUTPUT", label: "SW 성과물" },
+    { key: "international_registered", label: "국제 특허 등록" },
+    { key: "international_filed", label: "국제 특허 출원" },
+    { key: "domestic_registered", label: "국내 특허 등록" },
+    { key: "domestic_filed", label: "국내 특허 출원" },
+    { key: "software_output", label: "SW 성과물" },
   ];
 
   const normalizedQuery = query.trim().toLowerCase();
@@ -39,11 +88,11 @@ export function PatentsSection() {
   const counts = useMemo(() => {
     const base: Record<PatentCategory | "ALL", number> = {
       ALL: allItems.length,
-      INTERNATIONAL_REGISTERED: 0,
-      INTERNATIONAL_FILED: 0,
-      DOMESTIC_REGISTERED: 0,
-      DOMESTIC_FILED: 0,
-      SW_OUTPUT: 0,
+      international_registered: 0,
+      international_filed: 0,
+      domestic_registered: 0,
+      domestic_filed: 0,
+      software_output: 0,
     };
 
     for (const item of allItems) base[item.category] += 1;
@@ -64,10 +113,10 @@ export function PatentsSection() {
   const activeLabel = category === "ALL" ? "ALL" : patentCategoryLabel(category);
 
   const shortCategoryLabel = (value: PatentCategory) => {
-    if (value === "INTERNATIONAL_REGISTERED") return "INTL REG";
-    if (value === "INTERNATIONAL_FILED") return "INTL FILED";
-    if (value === "DOMESTIC_REGISTERED") return "KR REG";
-    if (value === "DOMESTIC_FILED") return "KR FILED";
+    if (value === "international_registered") return "INTL REG";
+    if (value === "international_filed") return "INTL FILED";
+    if (value === "domestic_registered") return "KR REG";
+    if (value === "domestic_filed") return "KR FILED";
     return "SW";
   };
 
@@ -117,6 +166,8 @@ export function PatentsSection() {
       </div>
 
       <div className="space-y-9 pt-2">
+        {loading ? <p className="text-[#6a7e9f]">Loading...</p> : null}
+        {error ? <p className="text-red-600">{error}</p> : null}
         {sections.map((section) => (
           <section key={section.category} className="space-y-2.5">
             <div className="flex items-center gap-3">

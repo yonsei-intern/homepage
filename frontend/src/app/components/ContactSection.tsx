@@ -1,6 +1,5 @@
 ﻿import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
 
 export function ContactSection() {
   const ref = useRef(null);
@@ -51,7 +50,7 @@ export function ContactSection() {
 
           <div className="overflow-hidden rounded-2xl h-[420px] bg-[#111318]">
             <iframe
-              src="https://maps.google.com/maps?q=Yonsei%20University%20Seoul&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=37.5663256,126.943157&z=15&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -63,16 +62,6 @@ export function ContactSection() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.35 }}
-          className="text-center"
-        >
-          <button className="inline-flex items-center gap-2 text-[#4A9EFF] hover:text-[#79b6ff] transition-colors text-base">
-            상세 위치 및 교통편 안내 <ArrowRight size={18} />
-          </button>
-        </motion.div>
       </div>
     </section>
   );

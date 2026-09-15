@@ -4,10 +4,93 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"
+      - "80:80"
     volumes:
       - .:/app
       - /app/node_modules
-    command: npm run dev -- --host 0.0.0.0 --port 5173
+    command: npm run dev -- --host 0.0.0.0 --port 80
+    environment:
+      VITE_API_PROXY_TARGET: http://api:3000
+    depends_on:
+      api:
+        condition: service_healthy
     stdin_open: true
     tty: true
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: homepage
+      PGUSER: homepage_reader
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${ADMIN_BIND_ADDRESS:-0.0.0.0}:3001:3001"
+    volumes:
+      - ./public/images:/app/site-images
+    environment:
+      PORT: 3001
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: homepage
+      PGUSER: homepage_admin
+      ADMIN_ALLOWED_HOSTS: ${ADMIN_ALLOWED_HOSTS:-*}
+      IMAGE_ROOT: /app/site-images
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: homepage
+      POSTGRES_USER: homepage_owner
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/002-seed.sql:ro
+      - ./database/publications-seed.sql:/docker-entrypoint-initdb.d/003-publications-seed.sql:ro
+      - ./database/patents-seed.sql:/docker-entrypoint-initdb.d/004-patents-seed.sql:ro
+      - ./database/projects-seed.sql:/docker-entrypoint-initdb.d/005-projects-seed.sql:ro
+      - ./database/news-seed.sql:/docker-entrypoint-initdb.d/006-news-seed.sql:ro
+      - ./database/professor-seed.sql:/docker-entrypoint-initdb.d/007-professor-seed.sql:ro
+      - ./database/site-images-seed.sql:/docker-entrypoint-initdb.d/008-site-images-seed.sql:ro
+      - ./database/home-research-papers-seed.sql:/docker-entrypoint-initdb.d/009-home-research-papers-seed.sql:ro
+      - ./database/current-data.sql:/docker-entrypoint-initdb.d/999-current-data.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U homepage_owner -d homepage"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:

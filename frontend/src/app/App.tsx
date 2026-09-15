@@ -1,6 +1,5 @@
 import { AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { JailbreakChatPage } from "./components/JailbreakChatPage";
 import { HomeSection } from "./components/HomeSection";
 import { RecruitSection } from "./components/RecruitSection";
 import { ProfessorSection } from "./components/ProfessorSection";
@@ -15,10 +14,9 @@ import { TABS, type TabKey } from "./tabs";
 function renderTab(
   tab: TabKey,
   setActiveTab: (t: TabKey) => void,
-  setShowJailbreak: (v: boolean) => void,
 ) {
   if (tab === "home")
-    return <HomeSection onNavigate={setActiveTab} onTry={() => setShowJailbreak(true)} />;
+    return <HomeSection onNavigate={setActiveTab} />;
   if (tab === "recruit") return <RecruitSection />;
   if (tab === "professor") return <ProfessorSection />;
   if (tab === "people") return <PeopleTabSection />;
@@ -31,7 +29,6 @@ function renderTab(
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabKey>("home");
-  const [showJailbreak, setShowJailbreak] = useState(false);
   const isHome = activeTab === "home";
   const isContact = activeTab === "contact";
 
@@ -48,8 +45,8 @@ export default function App() {
               {TABS.map((tab) => (
                 <button
                   key={tab.key}
-                  onClick={() => { setActiveTab(tab.key); setShowJailbreak(false); }}
-                  className={`px-2.5 md:px-3 py-1.5 text-xs md:text-sm transition-colors ${activeTab === tab.key && !showJailbreak
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`px-2.5 md:px-3 py-1.5 text-xs md:text-sm transition-colors ${activeTab === tab.key
                     ? "text-white font-semibold"
                     : "text-white/50 hover:text-white/85"
                     }`}
@@ -65,20 +62,15 @@ export default function App() {
       {/* Main */}
       <main
         className={
-          (isHome || isContact) && !showJailbreak
+          isHome || isContact
             ? "h-[calc(100dvh-82px)] w-full no-text-reveal"
             : "max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14 no-text-reveal"
         }
       >
         <AnimatePresence mode="wait">
-          {renderTab(activeTab, setActiveTab, setShowJailbreak)}
+          {renderTab(activeTab, setActiveTab)}
         </AnimatePresence>
       </main>
-
-      {/* Jailbreak Chat Overlay */}
-      {showJailbreak && (
-        <JailbreakChatPage onBack={() => setShowJailbreak(false)} />
-      )}
     </div>
   );
 }

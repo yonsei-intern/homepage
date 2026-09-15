@@ -1,23 +1,74 @@
 import { Search, X } from "lucide-react";
-import { useMemo, useState } from "react";
-import {
-  buildPublicationData,
-  PUBLICATION_RAW,
-  type PublicationCategory,
-} from "../publicationsData";
+import { useEffect, useMemo, useState } from "react";
 import { TabPage } from "./TabPrimitives";
+
+type PublicationCategory =
+  | "international_conference"
+  | "international_journal"
+  | "domestic_journal"
+  | "domestic_conference";
+
+type PublicationItem = {
+  id: string;
+  year: string;
+  text: string;
+  category: PublicationCategory;
+  isAward: boolean;
+  isBk: boolean;
+  hasImpactFactor: boolean;
+};
+
+function renderPublicationText(item: PublicationItem) {
+  return item.text.split(/(\([^)]*\))/g).map((part, index) => {
+    if (!part.startsWith("(")) return part;
+
+    const isImpactFactor = item.hasImpactFactor && /impact\s*factor/i.test(part);
+    const isBk = item.isBk && /\bBK\b/i.test(part);
+    const isAward = item.isAward && /(award|수상|(?:최우수|우수)논문상)/i.test(part);
+
+    if (isImpactFactor) {
+      return <span key={index} className="font-semibold text-[#1A5FB4]">{part}</span>;
+    }
+    if (isBk || isAward) {
+      return <span key={index} className="font-semibold text-red-600">{part}</span>;
+    }
+    return part;
+  });
+}
 
 export function PublicationsSection() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<PublicationCategory | "ALL">("ALL");
+  const [allItems, setAllItems] = useState<PublicationItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const allItems = useMemo(() => buildPublicationData(PUBLICATION_RAW), []);
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadPublications = async () => {
+      try {
+        const response = await fetch("/api/publications", { signal: controller.signal });
+        if (!response.ok) throw new Error("논문 목록을 불러오지 못했습니다.");
+        setAllItems(await response.json());
+      } catch (loadError) {
+        if (loadError instanceof DOMException && loadError.name === "AbortError") return;
+        setError("논문 목록을 불러오지 못했습니다.");
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    loadPublications();
+    return () => controller.abort();
+  }, []);
+
   const filterTabs: Array<{ key: PublicationCategory | "ALL"; label: string }> = [
     { key: "ALL", label: "ALL" },
-    { key: "INTERNATIONAL JOURNALS (SCI/SCIE)", label: "INTL JOURNALS" },
-    { key: "INTERNATIONAL CONFERENCES", label: "INTL CONFERENCES" },
-    { key: "DOMESTIC JOURNALS", label: "DOMESTIC JOURNALS" },
-    { key: "DOMESTIC CONFERENCES", label: "DOMESTIC CONFERENCES" },
+    { key: "international_conference", label: "INTL CONFERENCES" },
+    { key: "international_journal", label: "INTL JOURNALS" },
+    { key: "domestic_journal", label: "DOMESTIC JOURNALS" },
+    { key: "domestic_conference", label: "DOMESTIC CONFERENCES" },
   ];
 
   const normalizedQuery = query.trim().toLowerCase();
@@ -33,10 +84,10 @@ export function PublicationsSection() {
   const counts = useMemo(() => {
     const base: Record<PublicationCategory | "ALL", number> = {
       ALL: allItems.length,
-      "INTERNATIONAL JOURNALS (SCI/SCIE)": 0,
-      "INTERNATIONAL CONFERENCES": 0,
-      "DOMESTIC JOURNALS": 0,
-      "DOMESTIC CONFERENCES": 0,
+      international_conference: 0,
+      international_journal: 0,
+      domestic_journal: 0,
+      domestic_conference: 0,
     };
 
     for (const item of allItems) {
@@ -52,9 +103,9 @@ export function PublicationsSection() {
   );
   const activeLabel = filterTabs.find((tab) => tab.key === category)?.label ?? "ALL";
   const categoryBadgeText = (value: PublicationCategory) => {
-    if (value === "INTERNATIONAL JOURNALS (SCI/SCIE)") return "INTL JOURNAL";
-    if (value === "INTERNATIONAL CONFERENCES") return "INTL CONF";
-    if (value === "DOMESTIC JOURNALS") return "DOMESTIC JOURNAL";
+    if (value === "international_conference") return "INTL CONF";
+    if (value === "international_journal") return "INTL JOURNAL";
+    if (value === "domestic_journal") return "DOMESTIC JOURNAL";
     return "DOMESTIC CONF";
   };
 
@@ -104,6 +155,8 @@ export function PublicationsSection() {
       </div>
 
       <div className="space-y-7 pt-2">
+        {loading ? <p className="text-[#6a7e9f]">Loading...</p> : null}
+        {error ? <p className="text-red-600">{error}</p> : null}
         {years.map((year) => {
           const yearItems = filtered.filter((item) => item.year === year);
           return (
@@ -116,7 +169,7 @@ export function PublicationsSection() {
                 {yearItems.map((item, index) => (
                   <article key={item.id} id={item.id} className="grid gap-2 py-3.5 md:grid-cols-[48px_1fr_auto] hover:bg-[#fbfdff] transition-colors">
                     <div className="text-xs font-semibold text-[#1A5FB4]">{String(index + 1).padStart(2, "0")}</div>
-                    <p className="text-[14px] leading-relaxed text-[#152b4c]">{item.text}</p>
+                    <p className="text-[14px] leading-relaxed text-[#152b4c]">{renderPublicationText(item)}</p>
                     <span className="self-start text-[10px] text-[#62779a]">
                       {categoryBadgeText(item.category)}
                     </span>

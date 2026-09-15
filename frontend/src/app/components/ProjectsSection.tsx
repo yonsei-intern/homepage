@@ -1,13 +1,42 @@
 import { Search, X } from "lucide-react";
-import { useMemo, useState } from "react";
-import { buildProjectData, PROJECT_RAW } from "../projectsData";
+import { useEffect, useMemo, useState } from "react";
 import { TabPage } from "./TabPrimitives";
+
+type ProjectItem = {
+  id: string;
+  projectId: string;
+  year: string;
+  title: string;
+  organization: string;
+};
 
 export function ProjectsSection() {
   const [query, setQuery] = useState("");
   const [yearFilter, setYearFilter] = useState<string>("ALL");
+  const [allItems, setAllItems] = useState<ProjectItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const allItems = useMemo(() => buildProjectData(PROJECT_RAW), []);
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadProjects = async () => {
+      try {
+        const response = await fetch("/api/projects", { signal: controller.signal });
+        if (!response.ok) throw new Error("프로젝트 목록을 불러오지 못했습니다.");
+        setAllItems(await response.json());
+      } catch (loadError) {
+        if (loadError instanceof DOMException && loadError.name === "AbortError") return;
+        setError("프로젝트 목록을 불러오지 못했습니다.");
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    loadProjects();
+    return () => controller.abort();
+  }, []);
+
   const years = useMemo(
     () => [...new Set(allItems.map((item) => item.year))].sort((a, b) => Number(b) - Number(a)),
     [allItems],
@@ -98,6 +127,8 @@ export function ProjectsSection() {
       </div>
 
       <div className="space-y-9 pt-2">
+        {loading ? <p className="text-[#6a7e9f]">Loading...</p> : null}
+        {error ? <p className="text-red-600">{error}</p> : null}
         {sections.map((section) => (
           <section key={section.year} className="space-y-2.5">
             <div className="flex items-center gap-3">

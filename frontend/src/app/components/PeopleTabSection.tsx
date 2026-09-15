@@ -1,50 +1,83 @@
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { TabPage } from "./TabPrimitives";
+import { useSiteImages } from "../hooks/useSiteImages";
 
-type PeopleMember = { name: string; note?: string };
+type PeopleMember = {
+  id: string;
+  course: "phd" | "master" | "intern";
+  name: string;
+  note: string | null;
+  photoUrl: string | null;
+  publicEmail: string | null;
+};
 
-const PHD_STUDENTS: PeopleMember[] = [
-  { name: "LEOHYUN PARK" },
-  { name: "YOONSIK KIM" },
-  { name: "EUNBI HWANG" },
-  { name: "BYUNGCHUL KIM" },
-  { name: "SANGSOO HAN" },
-  { name: "NARAE KANG", note: "(Part)" },
-];
+function MemberPhoto({ member }: { member: PeopleMember }) {
+  const [failed, setFailed] = useState(false);
 
-const MASTER_STUDENTS: PeopleMember[] = [
-  { name: "WONYOUNG CHO" },
-  { name: "JUWON CHO" },
-  { name: "HYEOKJOO KWON" },
-  { name: "SHINYOUNG WON" },
-  { name: "MINJUN SUN" },
-  { name: "TAEHO KIM" },
-  { name: "AYEON KIM" },
-  { name: "JIHYEOK CHOI" },
-  { name: "HYUNSEOK LEE" },
-  { name: "GIWON KANG" },
-  { name: "SUN SIN KWON" },
-  { name: "GYUHWAN KIM" },
-  { name: "YOONDONG YEO" },
-  { name: "YEONKYO JUNG", note: "(Part)" },
-  { name: "YUNSEO LEE" },
-];
+  useEffect(() => setFailed(false), [member.photoUrl]);
+
+  if (!member.photoUrl || failed) {
+    return (
+      <div className="w-full aspect-[3/4] rounded-xl bg-[#e6e9ee] flex items-center justify-center">
+        <span className="text-xl md:text-2xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={member.photoUrl}
+      alt={`${member.name} profile`}
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className="w-full aspect-[3/4] rounded-xl object-cover bg-[#e6e9ee]"
+    />
+  );
+}
 
 export function PeopleTabSection() {
+  const siteImages = useSiteImages();
+  const [students, setStudents] = useState<PeopleMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadStudents = async () => {
+      try {
+        const response = await fetch("/api/students", { signal: controller.signal });
+        if (!response.ok) throw new Error("학생 목록을 불러오지 못했습니다.");
+        setStudents(await response.json());
+      } catch (loadError) {
+        if (loadError instanceof DOMException && loadError.name === "AbortError") return;
+        setError("학생 목록을 불러오지 못했습니다.");
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    loadStudents();
+    return () => controller.abort();
+  }, []);
+
+  const phdStudents = students.filter((student) => student.course === "phd");
+  const masterStudents = students.filter((student) => student.course === "master");
+  const interns = students.filter((student) => student.course === "intern");
+
   const renderMembers = (members: PeopleMember[]) => (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-5 gap-y-8">
       {members.map((member) => (
         <motion.div
-          key={member.name}
+          key={member.id}
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.25 }}
           className="space-y-3"
         >
-          <div className="w-full aspect-[3/4] rounded-xl bg-[#e6e9ee] flex items-center justify-center">
-            <span className="text-xl md:text-2xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
-          </div>
+          <MemberPhoto member={member} />
           <div className="pt-1 text-[0.9rem] text-[#172033] leading-[1.4]">
             <span className="font-semibold tracking-[0.01em]">{member.name}</span>
             {member.note ? <span className="text-[#5a667a]"> {member.note}</span> : null}
@@ -69,9 +102,11 @@ export function PeopleTabSection() {
           </motion.h3>
           <div className="pt-4">
             <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-4 md:gap-8 items-start">
-              <div className="w-[170px] sm:w-[200px] aspect-[3/4] rounded-xl bg-[#e6e9ee] flex items-center justify-center">
-                <span className="text-xl md:text-2xl font-semibold tracking-[0.14em] text-gray-400/70">TBD</span>
-              </div>
+              <img
+                src={siteImages.professor_profile ?? "/images/professor/taekyoung-kwon.png"}
+                alt="Prof. Taekyoung Kwon"
+                className="w-[170px] sm:w-[200px] aspect-[3/4] rounded-xl object-cover bg-[#e6e9ee]"
+              />
               <div className="space-y-2.5">
                 <motion.h2
                   initial={{ opacity: 0, y: 10 }}
@@ -107,9 +142,13 @@ export function PeopleTabSection() {
               transition={{ duration: 0.25 }}
               className="pt-3 text-[0.96rem] font-semibold text-[#123f86]"
             >
-              Ph.D.Students (Full-Time)
+              Ph.D.Students
             </motion.h3>
-            <div className="pt-4">{renderMembers(PHD_STUDENTS)}</div>
+            <div className="pt-4">
+              {loading ? <p className="text-[#5a667a]">Loading...</p> : null}
+              {error ? <p className="text-red-600">{error}</p> : null}
+              {!loading && !error ? renderMembers(phdStudents) : null}
+            </div>
           </section>
 
           <section className="grid grid-cols-1 md:grid-cols-[190px_1fr] gap-2 md:gap-8">
@@ -122,7 +161,31 @@ export function PeopleTabSection() {
             >
               Master Students
             </motion.h3>
-            <div className="pt-4">{renderMembers(MASTER_STUDENTS)}</div>
+            <div className="pt-4">
+              {loading ? <p className="text-[#5a667a]">Loading...</p> : null}
+              {error ? <p className="text-red-600">{error}</p> : null}
+              {!loading && !error ? renderMembers(masterStudents) : null}
+            </div>
+          </section>
+
+          <section className="grid grid-cols-1 md:grid-cols-[190px_1fr] gap-2 md:gap-8">
+            <motion.h3
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.8 }}
+              transition={{ duration: 0.25 }}
+              className="pt-3 text-[0.96rem] font-semibold text-[#123f86]"
+            >
+              Interns
+            </motion.h3>
+            <div className="pt-4">
+              {loading ? <p className="text-[#5a667a]">Loading...</p> : null}
+              {error ? <p className="text-red-600">{error}</p> : null}
+              {!loading && !error && interns.length > 0 ? renderMembers(interns) : null}
+              {!loading && !error && interns.length === 0 ? (
+                <p className="text-[0.9rem] text-[#7a8496]">등록된 인턴이 없습니다.</p>
+              ) : null}
+            </div>
           </section>
         </section>
       </div>

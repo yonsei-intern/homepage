@@ -10,7 +10,7 @@ const OFFICES = [
   },
   {
     name: "연구실",
-    location: "연세대학교 제1공학관 109동 110호",
+    location: "연세대학교 제1공학관 110호",
     phone: "02-2123-4197",
     email: "yonsei.seclab@gmail.com",
   },
@@ -72,7 +72,7 @@ export function ContactTabSection() {
 
             <div className="overflow-hidden rounded-2xl h-[420px] bg-[#f8fbff]">
               <iframe
-                src="https://maps.google.com/maps?q=Yonsei%20University%20Seoul&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=37.5663256,126.943157&z=15&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -84,11 +84,6 @@ export function ContactTabSection() {
             </div>
           </div>
 
-          <div className="text-center">
-            <button className="inline-flex items-center gap-2 text-[#1A5FB4] hover:text-[#164c91] transition-colors text-base">
-              상세 위치 및 교통 안내
-            </button>
-          </div>
         </div>
       </section>
     </TabPage>
