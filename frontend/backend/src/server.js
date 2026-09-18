@@ -205,7 +205,7 @@ app.get("/api/latest-news", async (_request, response, next) => {
       SELECT id, news_year, source, title, summary, link_url
       FROM latest_news
       ORDER BY display_order, id
-      LIMIT 5
+      LIMIT 12
     `);
 
     response.json(

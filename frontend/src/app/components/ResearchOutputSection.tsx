@@ -1,41 +1,14 @@
 import { motion, useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-
-type NewsItem = {
-  id: string;
-  year: string;
-  source: string;
-  title: string;
-  sub: string | null;
-  linkUrl: string | null;
-};
+import { useRef } from "react";
+import { useLatestNews } from "../hooks/useLatestNews";
+import type { NewsItem } from "../news";
 
 export function ResearchOutputSection() {
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-  const [news, setNews] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const loadNews = async () => {
-      try {
-        const response = await fetch("/api/latest-news", { signal: controller.signal });
-        if (!response.ok) throw new Error("소식 목록을 불러오지 못했습니다.");
-        setNews(await response.json());
-      } catch (loadError) {
-        if (loadError instanceof DOMException && loadError.name === "AbortError") return;
-        setError("소식 목록을 불러오지 못했습니다.");
-      } finally {
-        if (!controller.signal.aborted) setLoading(false);
-      }
-    };
-
-    loadNews();
-    return () => controller.abort();
-  }, []);
+  const { news, loading, error } = useLatestNews({
+    errorMessage: "소식 목록을 불러오지 못했습니다.",
+  });
 
   const rowContent = (item: NewsItem) => (
     <>

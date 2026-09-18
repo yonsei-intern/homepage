@@ -5,6 +5,7 @@ import { RecruitSection } from "./components/RecruitSection";
 import { ProfessorSection } from "./components/ProfessorSection";
 import { PeopleTabSection } from "./components/PeopleTabSection";
 import { AlumniSection } from "./components/AlumniSection";
+import { LatestNewsSection } from "./components/LatestNewsSection";
 import { PublicationsSection } from "./components/PublicationsSection";
 import { PatentsSection } from "./components/PatentsSection";
 import { ProjectsSection } from "./components/ProjectsSection";
@@ -21,6 +22,7 @@ function renderTab(
   if (tab === "professor") return <ProfessorSection />;
   if (tab === "people") return <PeopleTabSection />;
   if (tab === "alumni") return <AlumniSection />;
+  if (tab === "news") return <LatestNewsSection onBack={() => setActiveTab("home")} />;
   if (tab === "publications") return <PublicationsSection />;
   if (tab === "patents") return <PatentsSection />;
   if (tab === "projects") return <ProjectsSection />;
@@ -29,6 +31,7 @@ function renderTab(
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabKey>("home");
+  const activeNavTab = activeTab === "news" ? "home" : activeTab;
   const isHome = activeTab === "home";
   const isContact = activeTab === "contact";
 
@@ -47,7 +50,7 @@ export default function App() {
                   <button
                     key={tab.key}
                     onClick={() => setActiveTab(tab.key)}
-                    className={`px-2.5 md:px-3 py-1.5 text-xs md:text-sm transition-colors ${activeTab === tab.key
+                    className={`px-2.5 md:px-3 py-1.5 text-xs md:text-sm transition-colors ${activeNavTab === tab.key
                       ? "text-white font-semibold"
                       : "text-white/50 hover:text-white/85"
                       }`}

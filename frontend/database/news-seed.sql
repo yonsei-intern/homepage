@@ -33,6 +33,27 @@ INSERT INTO latest_news (news_year, source, title, summary, link_url) VALUES
     'Red-Teaming LLMs with Token Control Score: Efficient, Universal, and Transferable Jailbreaks',
     'Research in Attacks, Intrusions, and Defenses · BK, 정보과학회 우수학술대회',
     NULL
+  ),
+  (
+    2025,
+    'WISA',
+    'LeakGuard: Detecting Attribute Leakage in Diffusion Models',
+    NULL,
+    NULL
+  ),
+  (
+    2025,
+    'ICCV',
+    'Multi-View Slot Attention Using Paraphrased Texts',
+    NULL,
+    NULL
+  ),
+  (
+    2024,
+    'ISSTA',
+    'Fuzzing JavaScript Interpreters with Coverage-Guided RL',
+    NULL,
+    NULL
   )
 ON CONFLICT (news_year, source, title) DO UPDATE SET
   summary = EXCLUDED.summary,

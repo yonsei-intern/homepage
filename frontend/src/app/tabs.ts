@@ -4,6 +4,7 @@ export type TabKey =
   | "professor"
   | "people"
   | "alumni"
+  | "news"
   | "publications"
   | "patents"
   | "projects"

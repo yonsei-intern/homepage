@@ -124,6 +124,9 @@ COPY public.latest_news (id, news_year, source, title, summary, link_url, create
 3	2025	KIS 칼럼	[한국정보보호학회 칼럼] AI 모델 보안과 안전 그리고 신뢰	\N	https://www.boannews.com/news/articleView.html?idxno=140284	2026-09-02 02:42:09.743766+00	2026-09-02 02:44:17.530113+00	3
 4	2025	IEEE TIFS	Amplifying Training Data Exposure through Fine-Tuning with Pseudo-Labeled Memberships	IEEE Transactions on Information Forensics and Security · Impact Factor: 8	\N	2026-09-02 02:42:09.743766+00	2026-09-02 02:44:17.530113+00	4
 5	2025	RAID	Red-Teaming LLMs with Token Control Score: Efficient, Universal, and Transferable Jailbreaks	Research in Attacks, Intrusions, and Defenses · BK, 정보과학회 우수학술대회	\N	2026-09-02 02:42:09.743766+00	2026-09-02 02:44:17.530113+00	5
+6	2025	WISA	LeakGuard: Detecting Attribute Leakage in Diffusion Models	\N	\N	2026-09-02 02:42:09.743766+00	2026-09-02 02:44:17.530113+00	6
+7	2025	ICCV	Multi-View Slot Attention Using Paraphrased Texts	\N	\N	2026-09-02 02:42:09.743766+00	2026-09-02 02:44:17.530113+00	7
+8	2024	ISSTA	Fuzzing JavaScript Interpreters with Coverage-Guided RL	\N	\N	2026-09-02 02:42:09.743766+00	2026-09-02 02:44:17.530113+00	8
 \.
 
 
